@@ -1,59 +1,55 @@
-# Logseq-Hugo-Template
+# blog
 
-## Repo Structure
+Source of [blog.charliie.dev](https://blog.charliie.dev): notes on Linux, Logseq, Vim, Python,
+machine learning and food, built with [Hugo](https://gohugo.io/) and the
+[Hextra](https://github.com/imfing/hextra) theme in Catppuccin colours.
 
-```bash
-├── archetypes/    # A piece of content that's common to all of the content on your website.
-│   └── default.md
-├── content/    # Where you store all the content for your website.
-│   ├── assets/    # Things from LogseqGraph/assets.
-│   │   └── test.png
-│   ├── pages/    # Revised Logseq pages with metadata sections for Hugo.
-│   │   └── random page from logseq.md
-│   ├── archives.md
-│   └── search.md
-├── .github/    # Define GitHub action to help deploy in one click.
-│   └── workflows/
-│       └── publish.yml
-├── layouts/    # Where you define your layout for your website.
-│   ├── partials/
-│   │   └── backlinks.html    # Simulate backlinks function in Hugo.
-│   └── shortcodes/
-│       ├── logseq/    # Translation between Logseq and Hugo.
-│       │   ├── mark.html
-│       │   ├── orgCAUTION.html
-│       │   ├── orgEXAMPLE.html
-│       │   ├── orgIMPORTANT.html
-│       │   ├── orgNOTE.html
-│       │   ├── orgPINNED.html
-│       │   ├── orgQUOTE.html
-│       │   ├── orgTIP.html
-│       │   └── orgWARNING.html
-│       ├── contact.html
-│       ├── hint.html
-│       └── search.html
-├── themes/    # Where you can apply pre-build themes or your own theme.
-│   └── random-theme/   # In this repo, PaperMod is the default theme.
-├── config.yml    # The main settings page for your website.
-└── .gitignore    # This is to prevent unwanted files be tracked by Git.
+## Local development
+
+[mise](https://mise.jdx.dev/) installs the pinned Hugo from `mise.toml`, and Go from the
+`toolchain` line in `go.mod`. Go is only needed to fetch Hextra as a Hugo module.
+
+```sh
+mise run serve   # drafts and live reload on http://localhost:1313
+mise run build   # production build into public/
 ```
 
-### archetypes
+The dev server does not always pick up new templates, data files or taxonomy terms. Restart it
+if a new tag or partial does not show up.
 
-A piece of content that's common to all of the content on your website. For example, your can define `author` and `language` in archetypes.
+## Layout
 
-### content
+| Path                    | Holds                                                                    |
+| ----------------------- | ------------------------------------------------------------------------ |
+| `content/_index.md`     | The home page: intro, Explore cards and contact links                    |
+| `content/page/`         | Blog posts; `content/page/Logseq/` holds the Logseq series               |
+| `content/foodie/`       | Food reviews                                                             |
+| `content/dj/`           | The Disc Jockey section                                                  |
+| `static/images/`        | Images for posts, one folder per topic, plus the logo                    |
+| `assets/css/custom.css` | The Catppuccin palette (Latte light, Mocha dark) and theme overrides     |
+| `layouts/_partials/`    | Overrides of Hextra partials: backlinks, tags, dates and the page footer |
+| `layouts/shortcodes/`   | Shortcodes left over from the Logseq export                              |
+| `data/icons.yaml`       | Custom icons used by the home page cards (disc, ramen, Ko-fi)            |
+| `i18n/en.yaml`          | The footer copyright line                                                |
+| `hugo.yaml`             | Site configuration: the Hextra module, menus, taxonomies and math        |
 
-It basically where you store all the content for your website. Like "pages" and "assets" in Logseq.
+## Writing a post
 
-### layouts
+Posts follow a few conventions:
 
-Where you define your layout for your website. For example, a same header and a same footer on every page of your website.
+- **Title** reads `Topic | Subject`, such as `Logseq | Queries`.
+- **`description`** is a sentence or two that appears in the post list.
+- **`tags`** is the only taxonomy; there are no categories.
+- **`date`** is when the underlying note was written; **`lastMod`** is the last edit. Give a time
+  zone when the date is today, such as `2026-10-06T00:00:00+08:00`, or Hugo treats the post as
+  scheduled in the future and skips it.
+- **Sources** go into footnotes at the end, with link text in the form `Title - section`.
+- **Math** renders with KaTeX: `\( … \)` inline and `$$ … $$` or `\[ … \]` for blocks. A plain `$`
+  stays a dollar sign.
+- **Long code** can be folded with Hextra's `details` shortcode.
 
-### themes
+## Deployment
 
-Where you can apply pre-build themes or your own theme.
-
-### config.yml
-
-The main settings page for your website.
+Every push to `main` runs `.github/workflows/publish.yml`: mise sets up the same Hugo and Go, Hugo
+builds the site, and the result is pushed to the `gh-pages` branch, which GitHub Pages serves at
+the domain in `static/CNAME`. Dependabot keeps the GitHub Actions up to date every week.
