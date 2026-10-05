@@ -1,13 +1,24 @@
 ---
 title: Logseq | EDN_Settings
-description: "config.edn tweaks for Logseq: a custom progress-bar macro with its CSS, rendering != as ≠, and changing the foreground and background colours of highlighted text. Each snippet links back to the Discord or Twitter thread it came from."
+description: "Settings for Logseq's config.edn: a macro that draws a progress bar, a slash command that inserts ≠, and line wrapping in code blocks. Sources are listed at the end."
 tags:
   - logseq
 date: 2022-04-08
-lastMod: 2022-04-12
+lastMod: 2026-10-05
 ---
 
-Render a custom progress bar in Logseq, define a macro in `config.edn`:
+Settings that go in Logseq's `config.edn`. Each section says what the setting does, then shows it;
+sources are collected at the bottom. CSS tweaks live in
+[Logseq | CSS_Theme]({{< relref "CSS_Theme.md" >}}).
+
+## Macros
+
+### Progress bar
+
+**Goal.** Show a small progress bar, such as 47 of 195, inside a block.
+
+**How.** Add a `progress` entry to the `:macros` map. The macro renders a Hiccup `progress`
+element followed by the numbers:[^progress]
 
 ```edn
 {"progress" "[:span
@@ -17,72 +28,35 @@ Render a custom progress bar in Logseq, define a macro in `config.edn`:
               [:small \"$1/$2\"]]"}
 ```
 
-- For example Write `{{progress 47,195}}`.
+Call it with the current value and the maximum, for example `{{progress 47,195}}`. The bar's
+colours and rounded corners come from CSS; the matching style is the progress bar section of
+[Logseq | CSS_Theme]({{< relref "CSS_Theme.md" >}}).
 
-- [pengx17 on X: To render a custom progress bar in #Logseq, define a macro in config.edn](https://twitter.com/pengx17/status/1502293155974025218)
+## Editor
 
-- the style of the process bar in css:
+### Insert `≠` from the slash menu
 
-  - Progress par style in `custom.css`:
+**Goal.** Type `≠` without hunting for the character.
 
----
-
-Make `!=` looks like `≠`:
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951915033884000266)
+**How.** `:commands` adds custom entries to the slash menu. This pair adds a `/!=` command that
+inserts `≠`:[^neq]
 
 ```edn
 :commands
 [["!=" "≠"]]
 ```
 
----
+### Wrap long lines in code blocks
 
-A funny experiment to turn blocks / children-blocks into resizable blocks that behave like flex-boxes
+**Goal.** Long lines in a code block wrap instead of scrolling sideways.
 
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
-
-```css
-/* ls-blocks: resizable children blocks with depth levels */
-.block-children .ls-block {
-  display: inline-block;
-  margin: 6px;
-  background-color: rgba(50, 55, 60, 0.5);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.46);
-  padding: 2px 6px 8px 6px;
-  resize: both;
-  overflow: auto;
-  min-width: 160px;
-  min-height: 30px;
-  width: fit-content;
-  height: fit-content;
-  vertical-align: top;
-}
-```
-
----
-
-Change my highlighted text's fore and back colors
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/950759618638917652)
-
-```css
-mark {
-  background: #fef3ac;
-  color: #262626;
-  padding: 2px 4px;
-  border-radius: 3px;
-}
-```
-
----
-
-line wrap codes
-
-- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/963372513348423690)
+**How.** Pass `lineWrapping` through to the CodeMirror editor that Logseq uses for code
+blocks:[^wrap]
 
 ```edn
 :editor/extra-codemirror-options {:lineWrapping true}
 ```
 
----
+[^progress]: [pengx17 on X: To render a custom progress bar in #Logseq, define a macro in config.edn](https://twitter.com/pengx17/status/1502293155974025218)
+[^neq]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951915033884000266)
+[^wrap]: [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/963372513348423690)

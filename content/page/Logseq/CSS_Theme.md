@@ -972,3 +972,42 @@ div[data-refs-self*="1respuesta"] .bullet-container .bullet {
 ```
 
 ---
+
+A funny experiment to turn blocks / children-blocks into resizable blocks that behave like flex-boxes
+
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
+
+```css
+/* ls-blocks: resizable children blocks with depth levels */
+.block-children .ls-block {
+  display: inline-block;
+  margin: 6px;
+  background-color: rgba(50, 55, 60, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.46);
+  padding: 2px 6px 8px 6px;
+  resize: both;
+  overflow: auto;
+  min-width: 160px;
+  min-height: 30px;
+  width: fit-content;
+  height: fit-content;
+  vertical-align: top;
+}
+```
+
+---
+
+Change my highlighted text's fore and back colors
+
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/950759618638917652)
+
+```css
+mark {
+  background: #fef3ac;
+  color: #262626;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+```
+
+---
