@@ -26,7 +26,7 @@ other:[^task-states]
 **How.** Give each project page an `icon::` page property with an emoji, such as a stop sign or a
 green traffic light. The icon shows wherever the page or a link to it appears, and it can still be
 queried by matching the emoji, so it gives both the visual cue and an easy query.[^icon] The query
-itself is in [Logseq | Queries]({{< relref "Queries.md" >}}), under the icon page property.
+itself is in [Logseq | Queries: Pages with an `icon::` property]({{< relref "Queries.md#pages-with-an-icon-property" >}}).
 
 ### Query a page inside a namespace
 

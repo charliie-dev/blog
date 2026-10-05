@@ -1,83 +1,64 @@
 ---
 title: Logseq | Queries
-description: "Notes on Logseq advanced queries, from the background (Datalog, Datascript, Datomic, Logseq's database schema and Hiccup) to working examples: querying multiple tags, sorting by a block property, capturing quotes, scheduled and deadline tasks on today's journal, the current date, orphaned pages, queries inside templates, recurring tasks and more. Collected and tested from the Logseq Discord."
+description: "Logseq advanced queries: the background (Datalog, Datascript, Datomic, Hiccup and Logseq's schema) with a reading list, then working queries grouped by what they find: tags and references, block and page properties, tasks and dates including a NOW/LATER/WAITING dashboard, orphan pages, quotes and highlights, and HTML titles and templates. Sources are listed at the end."
 tags:
   - logseq
 date: 2022-04-08
-lastMod: 2022-04-21
+lastMod: 2026-10-05
 ---
 
-from @Jeddychan in Logseq's discord #.v-border-children
+Notes on Logseq's advanced queries. The first part covers the background and where to learn it;
+the rest are working queries grouped by what they find. Each section says what the query does,
+then shows it; sources are collected at the bottom.
 
-- Terms / Names -  
-  Datalog ------ a query language used for databases
-  Datascript --- a flavor of Datalog written in Clojure. Logseq currently uses Datascript.
-  Datomic ----- a different flavor of Datalog written in Clojure. (Some tutorials for Datomic may be helpful, but ymmv)
-  Hiccup ------- a language used to generate HTML, you can use it in an advanced query's custom view ( `:view` )
+## Background
 
-- Official Docs -  
-  [Logseq Docs: Queries](https://logseq.github.io/#/page/queries)
-  [Logseq Docs: Advanced Queries](https://logseq.github.io/#/page/advanced%20queries)
-  [Logseq Docs: Hiccup](https://logseq.github.io/#/page/hiccup)
+### Terms
 
-- Datalog -  
-  [Learn Datalog Today!](http://www.learndatalogtoday.org/)
-  [Learn Datalog Today! - Extensible Data Notation](http://www.learndatalogtoday.org/chapter/0)
-  When reading through this, I realized that viewing some of the query keywords as relationships between objects, made everything make a lot more sense/intuitive
+Collected by @Jeddychan and @Bad3r on the Logseq Discord:
 
-- Datascript -  
-  [DataScript Wiki: Getting started](https://github.com/tonsky/datascript/wiki/Getting-started)
-  [tonsky/datascript - Resources](https://github.com/tonsky/datascript#resources)
+| Term       | What it is                                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| Datalog    | A rule-based query language for databases, around since the 1980s.                                             |
+| Datascript | A flavour of Datalog written in Clojure. Logseq uses it.                                                       |
+| Datomic    | Another flavour of Datalog written in Clojure. Some of its tutorials help, though not everything applies.      |
+| Hiccup     | HTML written as Clojure data. An advanced query's custom view (`:view`) returns Hiccup.                        |
 
-- Datomic -  
+### Reading list
+
+- **Logseq:** [Logseq Docs: Queries](https://logseq.github.io/#/page/queries),
+  [Logseq Docs: Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries) and
+  [Logseq Docs: Hiccup](https://logseq.github.io/#/page/hiccup).
+- **Logseq, unofficial:** [Logseq MSK Docs: Queries](https://mschmidtkorth.github.io/logseq-msk-docs/#/page/queries)
+  and its [Queries/Advanced Queries/Tutorial](https://mschmidtkorth.github.io/logseq-msk-docs/#/page/Queries%2FAdvanced%20Queries%2FTutorial).
+- **Logseq's database schema:** [logseq/logseq: src/main/frontend/db_schema.cljs](https://github.com/logseq/logseq/blob/master/src/main/frontend/db_schema.cljs)
+  shows how the database is structured and lists every keyword, many of which appear in the
+  queries below.
+- **Datalog:** [Learn Datalog Today!](http://www.learndatalogtoday.org/), starting with its
+  chapter on [Extensible Data Notation](http://www.learndatalogtoday.org/chapter/0), and
+  [Learn Crux Datalog Today](https://nextjournal.com/try/learn-crux-datalog-today/learn-crux-datalog-today).
+  Reading query keywords as relationships between objects makes them far more intuitive.
+- **Datascript:** [DataScript Wiki: Getting started](https://github.com/tonsky/datascript/wiki/Getting-started),
+  [tonsky/datascript - Resources](https://github.com/tonsky/datascript#resources) and, for the
+  `:keys` option, [DataScript queries - Return maps](https://github.com/tonsky/datascript/blob/master/docs/queries.md#return-maps).
+- **Datomic:** [Datomic Query](https://docs.datomic.com/query.html). Only part of it applies, but
   [Query Reference - Syntax Used In Grammar](https://docs.datomic.com/on-prem/query/query.html#syntax-used-in-grammar)
-  Only some info here may be applicable, but I found the syntax section to be helpful in understanding the meaning of all the brackets used in queries (like: [ ], { }, ( ), etc.)
+  explains what all the brackets (`[ ]`, `{ }`, `( )`) mean.
+- **Hiccup:** [Hiccup Wiki: Syntax](https://github.com/weavejester/hiccup/wiki/Syntax) and
+  [yokolet/hiccup-samples](https://github.com/yokolet/hiccup-samples).
 
-- Logseq's Database Schema -  
-  [logseq/logseq: src/main/frontend/db_schema.cljs](https://github.com/logseq/logseq/blob/master/src/main/frontend/db_schema.cljs)
-  Here you can see how the database is structured and all the keywords (you may recognize some keywords from example queries)
+### Simple query rules inside advanced queries
 
-- Hiccup Syntax -  
-  [Hiccup Wiki: Syntax](https://github.com/weavejester/hiccup/wiki/Syntax)
+Advanced queries can call the rules behind simple queries, such as `page-property`, as
+@cldwalker pointed out.[^rules][^rules-example] The rules share their names with the simple query
+operators, but their arguments can differ; a gist lists examples of each.[^rules-gist] The release
+date queries below use `page-property` this way.
 
-- Unofficial Docs -  
-  [Logseq MSK Docs: Queries](https://mschmidtkorth.github.io/logseq-msk-docs/#/page/queries)
+## Tags and references
 
-from @Bad3r in Logseq's discord #.v-border-children
+### List every block's UUID
 
-- Datalog is what's called a rule based query language. It's been around since the 80s
-  Some resources for learning Datalog.
-
-- [Learn Datalog Today!](http://www.learndatalogtoday.org/)
-
-- [Learn Crux Datalog Today](https://nextjournal.com/try/learn-crux-datalog-today/learn-crux-datalog-today)
-
-- [Datomic Query](https://docs.datomic.com/query.html)
-
-Logseq queries
-
-- [Logseq MSK Docs: Queries/Advanced Queries/Tutorial](https://mschmidtkorth.github.io/logseq-msk-docs/#/page/Queries%2FAdvanced%20Queries%2FTutorial)
-
-- [Logseq Docs: Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries)
-
-from @Avijeet in Logseq's discord #.v-border-children
-
-- Hi, I have compiled a list of advanced queries and references from this channel, which I was able to execute for my database (still need to add those from the last few weeks). Thought it might be useful to those looking for advanced queries examples. Link to the original discord message and dates are also included for context 🙂.
-
-- [[Logseq/Advanced_queries_Examples]]
-
-from @cldwalker in Logseq's discord #.v-border-children
-
-- There is a handy new query feature in the nightly build - the ability to use any of these simple query rules, [logseq/logseq: rules.cljc (L61–L141)](https://github.com/logseq/logseq/blob/2e340ca1c6d73731275d526c09e94d8d9e44214e/src/main/frontend/db/rules.cljc#L61-L141),
-
-- in an advanced query. Here is an example query - [logseq/logseq: query_custom_test.cljs (L26–L29)](https://github.com/logseq/logseq/blob/ed6a02c6921f6605d6c2482ca013f81de9c16b01/src/test/frontend/db/query_custom_test.cljs#L26-L29) .
-
-- While the rules have the same names as the operators in simple queries, their arguments can be different. Examples of their arguments are at [Examples of rules that can be used from advanced query](https://gist.github.com/logseq-cldwalker/796202d55897fd34ea3d8c3bb3401ae0)
-
-- `:keys` logic for query:
-  [DataScript queries - Return maps](https://github.com/tonsky/datascript/blob/master/docs/queries.md#return-maps)
-
-Get all block's uuid
+Shows the raw result as text, which is handy for seeing what a query returns:
 
 ```clojure
 #+BEGIN_QUERY
@@ -89,9 +70,10 @@ Get all block's uuid
 #+END_QUERY
 ```
 
----
+### Pages with a given tag
 
-Example correction `6. All pages have a "programming" tag` in [Logseq Docs: Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries)
+A corrected version of example 6, "All pages have a programming tag", from the Logseq
+documentation.[^docs-advanced] It lists the pages as links:
 
 ```clojure
 #+BEGIN_QUERY
@@ -110,9 +92,9 @@ Example correction `6. All pages have a "programming" tag` in [Logseq Docs: Adva
 #+END_QUERY
 ```
 
----
+### Journal blocks that reference one of several tags
 
-Query multiple tags
+Finds blocks from the last seven days of journals that reference `TAG1` or `othertag`:
 
 ```clojure
 #+BEGIN_QUERY
@@ -133,9 +115,30 @@ Query multiple tags
 #+END_QUERY
 ```
 
----
+### Blocks that reference a page or tag
 
-Sorting based on a block property
+Finds every block that links to a page or carries it as a tag; the input is the page's lower-case
+name:
+
+```clojure
+#+BEGIN_QUERY
+{:title "Query for page references & tags."
+ :query [:find (pull ?b [*])
+         :in $ ?page_name
+         :where
+         [?b :block/refs ?r]
+         [?r :block/name ?page_name]]
+ :inputs
+ ["mar 28, 2022"]}
+#+END_QUERY
+```
+
+## Properties
+
+### Sort by a block property
+
+Lists the blocks that have a `birthday` property in a table and sorts them by it. The sort key
+`:verjaardag` is Dutch for birthday; rename it to match the property you filter on.
 
 ```clojure
 - query-table:: false
@@ -154,9 +157,226 @@ Sorting based on a block property
   #+END_QUERY
 ```
 
----
+### Blocks that point at the current page
 
-Display today page through query dynamically based on today's date
+**Goal.** Put one query in a page template that always finds the blocks related to the page it
+sits on, instead of hard-coding the page name on every page.
+
+**How.** `:current-page` passes the page's name in. This version finds the blocks on the current
+page that are tagged `datalog`:
+
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?b [*])
+         :in $ ?current-page
+         :where
+         [?p :block/name ?current-page]
+         [?b :block/page ?p]
+         [?b :block/path-refs [:block/name "datalog"]]]
+ :inputs [:current-page]}
+#+END_QUERY
+```
+
+This one finds open tasks whose `projects` property contains the current page, sorted by
+priority:
+
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?e [*])
+         :in $ ?current-page
+         :where
+         [?b :block/marker ?marker]
+         [(contains? #{"TODO" "LATER" "NOW" "DOING"} ?marker)]
+         [?e :block/properties ?prop]
+         [(get ?prop :projects) ?value]
+         [(contains? ?value ?current-page)]]
+ :inputs [:current-page]
+ :result-transform (fn [result]
+
+                     (sort-by (fn [h]
+                                (get h :block/priority "Z")) result))
+ :collapsed? false}
+#+END_QUERY
+```
+
+The page name arrives in lower case. `:block/original-name` keeps the original case, but
+`:block/name` is always lower case, so do not rely on case to tell pages apart.[^lowercase]
+
+### Pages with an `icon::` property
+
+Finds every block whose properties include `icon`, to pair with the project status tip in
+[Logseq | Tips]({{< relref "Tips.md#show-a-projects-status-with-an-icon-property" >}}):[^icon]
+
+```clojure
+#+BEGIN_QUERY
+ {:title ""
+  :query [:find (pull ?p [*])
+          :where
+          [?p :block/properties ?prop]
+          [(get ?prop :icon) ?icon]
+          ;; [(= "example" ?type)]
+          ]}
+#+END_QUERY
+```
+
+### Filter by a number range
+
+**Goal.** Find blocks whose numeric property, such as `num-prop`, is above 100 or between 20 and
+50.
+
+**How.** Read the property and compare it:[^number]
+
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?b [*])
+         :where
+         [?b :block/properties ?prop]
+         [(get ?prop :num-prop) ?num]
+         [(> ?num 100)]]}
+#+END_QUERY
+```
+
+For a range, replace `[(> ?num 100)]` with two comparisons:
+
+```clojure
+         [(< ?num 50)]
+[(> ?num 20)]
+```
+
+There is no `float` function, so multiply by `1.0` to compare fractional values:
+
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?b [*])
+         :where
+         [?b :block/properties ?prop]
+         [(get ?prop :num-prop) ?num]
+         [(* 1.0 ?num) ?numf]
+         [(< ?numf 50)]
+         [(> ?numf 20)]]}
+#+END_QUERY
+```
+
+### Filter by a release date
+
+**Goal.** List the series still to watch that have not been released yet.
+
+**How.** Store the release date on each page, either as a Unix timestamp in milliseconds or as a
+`yyyyMMdd` number:[^release]
+
+- **Ozark/S04/Part 1**
+
+```
+title:: Ozark/S04/Part 1
+status:: #towatch
+type:: series
+genre:: Crime, Drama, Thriller
+tags:: Netflix
+release_timestamp:: 1642723200000
+release_smushed:: 20220121
+```
+
+- **Ozark/S04/Part 2**
+
+```
+title:: Ozark/S04/Part 2
+status:: #towatch
+type:: series
+genre:: Crime, Drama, Thriller
+tags:: Netflix
+release_timestamp:: 1651190400000
+release_smushed:: 20220429
+```
+
+Compare the timestamp with `:right-now-ms`:
+
+```clojure
+#+BEGIN_QUERY
+{:title "Unreleased Shows"
+ :query [:find (pull ?p [*])
+         :in $ ?today
+         :where
+         (page-property ?p :type "series")
+         (page-property ?p :status "towatch")
+         [?p :block/properties ?props]
+         [(get ?props :release-timestamp) ?d]
+         [(>  ?d ?today)]]
+ :inputs [:right-now-ms]}
+#+END_QUERY
+```
+
+Or compare the `yyyyMMdd` number with `:today`, which uses the same format:
+
+```clojure
+#+BEGIN_QUERY
+{:title "Unreleased Shows"
+ :query [:find (pull ?p [*])
+         :in $ ?today
+         :where
+         (page-property ?p :type "series")
+         (page-property ?p :status "towatch")
+         [?p :block/properties ?props]
+         [(get ?props :release-smushed) ?d]
+         [(>  ?d ?today)]]
+ :inputs [:today]}
+#+END_QUERY
+```
+
+### Dates stored as journal links
+
+When the `release` property links to a journal page instead, match the journal page by
+`:block/original-name` rather than `:block/name`, because the property keeps the date in the
+journal's original format:[^journal-link][^journal-link-2]
+
+```clojure
+#+BEGIN_QUERY
+{:title ["Unreleased Shows"]
+ :query [:find (pull ?p2 [*])
+         :in $ ?today
+         :where
+         [?p2 :block/name _]
+         [?p2 :block/properties ?prop]
+         [(get ?prop :release) ?rel]
+         [?p :block/original-name ?n]
+         [(contains? ?rel ?n)]
+         [?p :block/journal-day ?d]
+         [(> ?d ?today)]
+         [(get ?prop :type) ?type]
+         [(contains? #{"series"} ?type)]
+         [(get ?prop :status) ?status]
+         [(= #{"towatch"} ?status)]]
+ :inputs [:today]}
+#+END_QUERY
+```
+
+### Scheduled tasks within a namespace
+
+Finds scheduled tasks on pages under the `golf` namespace:[^namespace]
+
+```clojure
+#+BEGIN_QUERY
+{:title " Scheduled dates in Golf namespace"
+ :query [:find (pull ?b [*])
+         :where
+         [?b :block/scheduled ?d]
+         [?b :block/marker ?marker]
+         [?b :block/page ?p]
+         [?p :block/namespace ?ns]
+         [?ns :block/name ?nsn]
+         [(contains? #{"golf"} ?nsn)]]
+ :collapsed? false}
+#+END_QUERY
+```
+
+`:block/namespace` is a page attribute, and `:block/name` is the lower-case form of
+`:block/original-name`, the page name.
+
+## Tasks and dates
+
+### Scheduled tasks from today on
+
+Lists scheduled tasks that are not done, cancelled or `LATER`, from today onwards, sorted by
+priority:
 
 ```clojure
 #+BEGIN_QUERY
@@ -185,96 +405,9 @@ Display today page through query dynamically based on today's date
 #+END_QUERY
 ```
 
----
+### Scheduled or deadline items on that day's journal
 
-Capture all the quotes
-
-- Logseq has two ways you can write quotes, you only match one, this should do the trick:
-
-```clojure
-#+BEGIN_QUERY
- {:title "QUOTE search"
-  :query [:find (pull ?b [*])
-          :where
-          [?b :block/content ?c]
-          (or [(clojure.string/includes? ?c "#+BEGIN_QUOTE")]
-              [(clojure.string/starts-with? ?c "> ")])]}
-#+END_QUERY
-```
-
----
-
-Query for all the blocks which have a block property = current page, use the name of current page dynamically instead of fixing it on each page
-
-- the page name have to be `lowercase`.
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?b [*])
-         :in $ ?current-page
-         :where
-         [?p :block/name ?current-page]
-         [?b :block/page ?p]
-         [?b :block/path-refs [:block/name "datalog"]]]
- :inputs [:current-page]}
-#+END_QUERY
-```
-
-- you can use `:block/name` or `:block/original-name` to differentiate, but the first is always lowercase (afaik), so it's not a good habit (on Logseq) to depend on differences in case.
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?e [*])
-         :in $ ?current-page
-         :where
-         [?b :block/marker ?marker]
-         [(contains? #{"TODO" "LATER" "NOW" "DOING"} ?marker)]
-         [?e :block/properties ?prop]
-         [(get ?prop :projects) ?value]
-         [(contains? ?value ?current-page)]]
- :inputs [:current-page]
- :result-transform (fn [result]
-
-                     (sort-by (fn [h]
-                                (get h :block/priority "Z")) result))
- :collapsed? false}
-#+END_QUERY
-```
-
-- [`:current-page` and `<% current page %>` should not lower-case the page's title - comment](https://github.com/logseq/logseq/issues/4206#issuecomment-1038279559)
-
----
-
-find block which are highlighted with ==
-
-- sol. 1
-
-```clojure
-#+BEGIN_QUERY
- {:title "Highlight search"
-  :query [:find (pull ?b [*])
-          :where
-          [?b :block/content ?c]
-          [(clojure.string/includes? ?c "==")]]}
-#+END_QUERY
-```
-
-- sol. 2
-
-```clojure
-#+BEGIN_QUERY
- {:title "Highlight search"
-  :query [:find (pull ?b [*])
-          :where
-          [?b :block/content ?c]
-          [(re-pattern "==.*==") ?regex]
-          [(re-find ?regex ?c)]]}
-#+END_QUERY
-```
-
----
-
-Show scheduled or deadline only on today's journal
+Placed in the journal template, it shows only the items scheduled or due on that journal's date:
 
 ```clojure
 #+BEGIN_QUERY
@@ -293,36 +426,9 @@ Show scheduled or deadline only on today's journal
 #+END_QUERY
 ```
 
----
+### Collect the week's journal entries
 
-Query the block & page title of certain pages or tags
-
-```clojure
-#+BEGIN_QUERY
-{:title "Query for page references & tags."
- :query [:find (pull ?b [*])
-         :in $ ?page_name
-         :where
-         [?b :block/refs ?r]
-         [?r :block/name ?page_name]]
- :inputs
- ["mar 28, 2022"]}
-#+END_QUERY
-```
-
----
-
-Always query for current date / today
-
-- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/952597973894848613)
-
-- `{{query <%today%>}}`
-
----
-
-Concatenate all the journal entries of the week in the Friday entry.
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955436664048717855)
+Gathers the last seven days of journal blocks, for example into the Friday entry:[^week]
 
 ```clojure
 #+BEGIN_QUERY
@@ -343,29 +449,38 @@ Concatenate all the journal entries of the week in the Friday entry.
 #+END_QUERY
 ```
 
----
+### Recurring tasks
 
-As I'm using NOW/LATER + WAITING approach, my common workflow for tasks life cycle is:
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?b [*])
+         :where
+         [?b :block/repeated?]]}
+#+END_QUERY
+```
 
-- add something not urgent (and visually "muted") with WAITING without date
-- add common task with LATER + plan it if needed with deadline\scheduled
-- add current\urgent task with NOW --> work on it --> finish with DONE
-- take overdued tasks
-- take some LATER task --> delete planed date if it was --> set it to NOW --> work --> finish with DONE
+The query comes from #queries.[^recurring]
 
-I was trying to mix 2 layers of tasks planning as you can see - task status cycle and "calendared" items:
+### Today's date in a simple query
 
-- "what is overdued?"
-- "what should I do today?"
-- "what should I do tomorrow?"
-- "what can I do next?"
-- "what is WAITING?"
+`{{query <%today%>}}` always queries the current date.[^today]
 
-  - **PS**: no sorting in queries, as i want to see parent pages links 😒 #.v-gallery-h400-fit
+### A NOW, LATER and WAITING dashboard
 
-- ✅ wanna have block answering my question "what is overdued?"
-  - anything task calendared before today
-  - also as this block can called "attention" - I'm searching for "wrong" tasks calendared NOW(it should no have date, as described before)
+A Discord member shared the dashboard they use with a NOW, LATER and WAITING workflow:
+
+> - add something not urgent (and visually "muted") with WAITING without date
+> - add common task with LATER + plan it if needed with deadline\scheduled
+> - add current\urgent task with NOW --> work on it --> finish with DONE
+> - take overdued tasks
+> - take some LATER task --> delete planed date if it was --> set it to NOW --> work --> finish
+>   with DONE
+
+The dashboard mixes two layers, the task status and the calendar, to answer five questions. The
+queries do not sort, so the results stay grouped under their parent pages.
+
+**What is overdue?** Anything scheduled or due before today, plus `NOW` tasks that carry a date,
+which in this workflow should not have one:
 
 ```clojure
 #+BEGIN_QUERY
@@ -391,9 +506,7 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 #+END_QUERY
 ```
 
-- ✅ wanna have block answering my question "what should i do today?"
-  - not calendared status NOW = today
-  - status LATER with date today
+**What should I do today?** `NOW` tasks without a date, and `LATER` tasks dated today:
 
 ```clojure
 #+BEGIN_QUERY
@@ -420,8 +533,7 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 #+END_QUERY
 ```
 
-- ✅ wanna have block answering my question "what should i do tomorrow?"
-  - LATER with date tomorrow
+**What should I do tomorrow?** `LATER` tasks dated tomorrow:
 
 ```clojure
 #+BEGIN_QUERY
@@ -440,9 +552,7 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 #+END_QUERY
 ```
 
-- ✅ wanna have block answering my question "what can i do next?"
-  - not calendared with status LATER = next
-  - any status with date after tomorrow = next
+**What can I do next?** `LATER` tasks without a date, and anything dated within the next week:
 
 ```clojure
 #+BEGIN_QUERY
@@ -469,8 +579,7 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 #+END_QUERY
 ```
 
-- ✅ wanna have block answering my question "what is WAITING?" (collapsed, to not blow my eyes)
-  - not calendared with status WAITING
+**What is waiting?** `WAITING` tasks, collapsed so they stay out of the way:
 
 ```clojure
 #+BEGIN_QUERY
@@ -486,37 +595,11 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 #+END_QUERY
 ```
 
----
+## Pages and blocks
 
-Add HTML markup to query title
+### Orphan pages
 
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955453273077338202)
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955453575310499840)
-
-- [Hiccup Wiki: Syntax](https://github.com/weavejester/hiccup/wiki/Syntax)
-
-- [yokolet/hiccup-samples](https://github.com/yokolet/hiccup-samples)
-
----
-
-page for pdf files has property `:file` and `:file-path`:
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/957340667292577802)
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?p [*])
-         :where
-         [has-page-property ?p :file]]}
-#+END_QUERY
-```
-
----
-
-Find all unlinked pages/orphaned nodes
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/832512082289229824)
+Lists the pages that no block links to:[^orphans]
 
 ```clojure
 #+BEGIN_QUERY
@@ -536,11 +619,88 @@ Find all unlinked pages/orphaned nodes
 #+END_QUERY
 ```
 
----
+### Pages for PDF files
 
-Use query in a template.
+The page Logseq creates for a PDF has the properties `:file` and `:file-path`, so it can be found
+with `has-page-property`:[^pdf]
 
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/960623468347527208**)
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?p [*])
+         :where
+         [has-page-property ?p :file]]}
+#+END_QUERY
+```
+
+### The second block of a page
+
+Finds the block that follows a page's properties block:[^second]
+
+```clojure
+#+BEGIN_QUERY
+{:query [:find (pull ?bl [*])
+         :where
+         [?b :block/pre-block?]
+         [?bl :block/left ?b]]}
+#+END_QUERY
+```
+
+## Content
+
+### Quotes
+
+Logseq writes a quote either as a `#+BEGIN_QUOTE` block or as a line starting with `> `; this
+query matches both:
+
+```clojure
+#+BEGIN_QUERY
+ {:title "QUOTE search"
+  :query [:find (pull ?b [*])
+          :where
+          [?b :block/content ?c]
+          (or [(clojure.string/includes? ?c "#+BEGIN_QUOTE")]
+              [(clojure.string/starts-with? ?c "> ")])]}
+#+END_QUERY
+```
+
+### Highlighted text
+
+Finds blocks with text highlighted by `==`. The first version matches any `==`:
+
+```clojure
+#+BEGIN_QUERY
+ {:title "Highlight search"
+  :query [:find (pull ?b [*])
+          :where
+          [?b :block/content ?c]
+          [(clojure.string/includes? ?c "==")]]}
+#+END_QUERY
+```
+
+The second needs a pair of `==` with text between them:
+
+```clojure
+#+BEGIN_QUERY
+ {:title "Highlight search"
+  :query [:find (pull ?b [*])
+          :where
+          [?b :block/content ?c]
+          [(re-pattern "==.*==") ?regex]
+          [(re-find ?regex ?c)]]}
+#+END_QUERY
+```
+
+## Titles and templates
+
+### HTML in a query title
+
+`:title` accepts Hiccup as well as a string, as the dashboard above shows; the Hiccup references
+in the reading list cover the syntax.[^title][^title-2]
+
+### A query in a template
+
+Template placeholders such as `<%current page%>` work inside a query, so a page template can carry
+a query titled with the page's name that lists the blocks referencing it:[^template]
 
 ```clojure
 #+BEGIN_QUERY
@@ -555,206 +715,23 @@ Use query in a template.
 #+END_QUERY
 ```
 
----
-
-Query for **icon page property**.
-
-- [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961743401152286770)
-
-```clojure
-#+BEGIN_QUERY
- {:title ""
-  :query [:find (pull ?p [*])
-          :where
-          [?p :block/properties ?prop]
-          [(get ?prop :icon) ?icon]
-          ;; [(= "example" ?type)]
-          ]}
-#+END_QUERY
-```
-
----
-
-Get scheduled tasks within a namespace.
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/962006699223429260)
-
-```clojure
-#+BEGIN_QUERY
-{:title " Scheduled dates in Golf namespace"
- :query [:find (pull ?b [*])
-         :where
-         [?b :block/scheduled ?d]
-         [?b :block/marker ?marker]
-         [?b :block/page ?p]
-         [?p :block/namespace ?ns]
-         [?ns :block/name ?nsn]
-         [(contains? #{"golf"} ?nsn)]]
- :collapsed? false}
-#+END_QUERY
-```
-
-- `:block/namespace` are page property and `:block/name` are lowercase version of `:block/original-name`(page-name)
-
----
-
-Filter the page with time/timestamp.
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963473363043512390)
-
-- **Ozark/S04/Part 1**
-
-```
-title:: Ozark/S04/Part 1
-status:: #towatch
-type:: series
-genre:: Crime, Drama, Thriller
-tags:: Netflix
-release_timestamp:: 1642723200000
-release_smushed:: 20220121
-```
-
-- **Ozark/S04/Part 2**
-
-```
-title:: Ozark/S04/Part 2
-status:: #towatch
-type:: series
-genre:: Crime, Drama, Thriller
-tags:: Netflix
-release_timestamp:: 1651190400000
-release_smushed:: 20220429
-```
-
-- Query for timestamp
-
-```clojure
-#+BEGIN_QUERY
-{:title "Unreleased Shows"
- :query [:find (pull ?p [*])
-         :in $ ?today
-         :where
-         (page-property ?p :type "series")
-         (page-property ?p :status "towatch")
-         [?p :block/properties ?props]
-         [(get ?props :release-timestamp) ?d]
-         [(>  ?d ?today)]]
- :inputs [:right-now-ms]}
-#+END_QUERY
-```
-
-- Query for yyyyMMdd
-
-```clojure
-#+BEGIN_QUERY
-{:title "Unreleased Shows"
- :query [:find (pull ?p [*])
-         :in $ ?today
-         :where
-         (page-property ?p :type "series")
-         (page-property ?p :status "towatch")
-         [?p :block/properties ?props]
-         [(get ?props :release-smushed) ?d]
-         [(>  ?d ?today)]]
- :inputs [:today]}
-#+END_QUERY
-```
-
----
-
-Using journal-date format in page property and query it.
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963685777122930698)
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963722478973243404)
-
-- just tested it with different journal-date format. replace `[?p :block/name ?n]` with `[?p :block/original-name ?n]`. date value are stored in property with `original-name`.
-
-```clojure
-#+BEGIN_QUERY
-{:title ["Unreleased Shows"]
- :query [:find (pull ?p2 [*])
-         :in $ ?today
-         :where
-         [?p2 :block/name _]
-         [?p2 :block/properties ?prop]
-         [(get ?prop :release) ?rel]
-         [?p :block/original-name ?n]
-         [(contains? ?rel ?n)]
-         [?p :block/journal-day ?d]
-         [(> ?d ?today)]
-         [(get ?prop :type) ?type]
-         [(contains? #{"series"} ?type)]
-         [(get ?prop :status) ?status]
-         [(= #{"towatch"} ?status)]]
- :inputs [:today]}
-#+END_QUERY
-```
-
----
-
-Have a `property` field that I only fill with numbers (floats). Is it possible to pull blocks where this field is within a range (say 20 < x < 50, or just x > 100).
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966146506392473640)
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?b [*])
-         :where
-         [?b :block/properties ?prop]
-         [(get ?prop :num-prop) ?num]
-         [(> ?num 100)]]}
-#+END_QUERY
-```
-
-- for 20<x<50 replace `[(> ?num 100)]` with
-
-```clojure
-         [(< ?num 50)]
-[(> ?num 20)]
-```
-
-- float function doesn't recognized, so multiply property by 1.0
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?b [*])
-         :where
-         [?b :block/properties ?prop]
-         [(get ?prop :num-prop) ?num]
-         [(* 1.0 ?num) ?numf]
-         [(< ?numf 50)]
-         [(> ?numf 20)]]}
-#+END_QUERY
-```
-
-- ***
-
-Query tasks which are recurring.
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966350378172035072)
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?b [*])
-         :where
-         [?b :block/repeated?]]}
-#+END_QUERY
-```
-
----
-
-Query to get second block.
-
-- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966502226589777920)
-
-```clojure
-#+BEGIN_QUERY
-{:query [:find (pull ?bl [*])
-         :where
-         [?b :block/pre-block?]
-         [?bl :block/left ?b]]}
-#+END_QUERY
-```
-
----
+[^rules]: [logseq/logseq: rules.cljc (L61–L141)](https://github.com/logseq/logseq/blob/2e340ca1c6d73731275d526c09e94d8d9e44214e/src/main/frontend/db/rules.cljc#L61-L141)
+[^rules-example]: [logseq/logseq: query_custom_test.cljs (L26–L29)](https://github.com/logseq/logseq/blob/ed6a02c6921f6605d6c2482ca013f81de9c16b01/src/test/frontend/db/query_custom_test.cljs#L26-L29)
+[^rules-gist]: [Examples of rules that can be used from advanced query](https://gist.github.com/logseq-cldwalker/796202d55897fd34ea3d8c3bb3401ae0)
+[^docs-advanced]: [Logseq Docs: Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries)
+[^lowercase]: [`:current-page` and `<% current page %>` should not lower-case the page's title - comment](https://github.com/logseq/logseq/issues/4206#issuecomment-1038279559)
+[^icon]: [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961743401152286770)
+[^number]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966146506392473640)
+[^release]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963473363043512390)
+[^journal-link]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963685777122930698)
+[^journal-link-2]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963722478973243404)
+[^namespace]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/962006699223429260)
+[^week]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955436664048717855)
+[^recurring]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966350378172035072)
+[^today]: [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/952597973894848613)
+[^orphans]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/832512082289229824)
+[^pdf]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/957340667292577802)
+[^second]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966502226589777920)
+[^title]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955453273077338202)
+[^title-2]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955453575310499840)
+[^template]: [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/960623468347527208)
