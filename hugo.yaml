@@ -1,6 +1,6 @@
 baseURL: https://blog.charliie.dev
 locale: en-us
-title: Blog
+title: charliie.dev
 enableRobotsTXT: true
 
 # Hextra as a Hugo module; the version is pinned in go.mod too (Renovate updates both).
@@ -31,6 +31,10 @@ markup:
 
 enableInlineShortcodes: true
 
+# Categories are folded into tags; tags are the only taxonomy.
+taxonomies:
+  tag: tags
+
 outputs:
   home: [html, rss]
   section: [html, rss]
@@ -41,29 +45,32 @@ menu:
     - name: Blog
       pageRef: /page
       weight: 1
-    - name: Categories
-      pageRef: /categories
+    - name: Disc Jockey
+      pageRef: /dj
       weight: 2
+    - name: Foodie
+      pageRef: /foodie
+      weight: 3
     - name: Tags
       pageRef: /tags
-      weight: 3
-    - name: Search
       weight: 4
+    - name: Search
+      weight: 5
       params:
         type: search
     - name: GitHub
       url: https://github.com/charliie-dev
-      weight: 5
-      params:
-        icon: github
-    - name: Mastodon
-      url: https://mstdn.social/@charliie
       weight: 6
       params:
-        icon: mastodon
+        icon: github
+    - name: Email
+      url: mailto:mail@charliie.dev
+      weight: 7
+      params:
+        icon: mail
     - name: RSS
       url: /index.xml
-      weight: 7
+      weight: 8
       params:
         icon: rss
 
@@ -79,9 +86,10 @@ params:
     displayTitle: true
     displayLogo: true
     logo:
-      path: unicorn72x72.png
-      width: 28
-      height: 28
+      path: images/unicorn_logo_black.svg
+      dark: images/unicorn_logo_white.svg
+      width: 31
+      height: 30
       link: /
 
   footer:

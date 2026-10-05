@@ -1,0 +1,83 @@
+/* Home page: avatar/intro on the left, Explore cards on the right (stacked on small screens). */
+/* hextra-home wraps .Content in a flex column with items-start, which shrinks children to their
+   content width; stretch this block to the full row and centre it. The right column needs at
+   least ~520px for the cards grid to show two columns (Hextra's cards use a 250px minimum). */
+.home-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem 4rem;
+  align-items: center;
+  align-self: stretch;
+  width: 100%;
+  max-width: 64rem;
+  margin: 4rem auto 0;
+}
+
+@media (min-width: 900px) {
+  .home-split {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+}
+
+.home-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.home-tagline {
+  list-style: disc;
+  text-align: left;
+  padding-left: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  color: rgb(75 85 99); /* gray-600 */
+}
+
+.dark .home-tagline {
+  color: rgb(163 163 163); /* neutral-400 */
+}
+
+.home-explore-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgb(229 231 235); /* gray-200 */
+}
+
+.dark .home-explore-title {
+  border-bottom-color: rgb(38 38 38); /* neutral-800 */
+}
+
+.home-section-gap {
+  margin-top: 2.5rem;
+}
+
+.home-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  padding: 0.25rem 0.25rem 0;
+  color: rgb(75 85 99); /* gray-600 */
+}
+
+.dark .home-contacts {
+  color: rgb(212 212 212); /* neutral-300 */
+}
+
+.home-contacts a {
+  display: inline-flex;
+  transition: color 150ms, transform 150ms;
+}
+
+.home-contacts a:hover {
+  color: rgb(17 24 39); /* gray-900 */
+  transform: translateY(-1px);
+}
+
+.dark .home-contacts a:hover {
+  color: #fff;
+}
