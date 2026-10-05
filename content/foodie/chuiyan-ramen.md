@@ -1,6 +1,6 @@
 ---
-title: Chuiyan (炊煙) | Black Garlic Ramen
-description: "Lunch at Chuiyan (炊煙) near Sanchong Elementary School station: a rich, gelatinous black garlic ramen that runs a little sweet, a cheap chashu rice bowl worth adding, and crisp fried chicken. Plus the Taipei Metro ramen map I use to pick the next shop."
+title: 炊煙 | 黑蒜拉麵
+description: "三重國小站附近的炊煙：黑蒜拉麵湯頭濃厚帶膠質但略甜，便宜的叉燒飯很值得加點，炸雞皮脆汁美。最後附上我用來找下一家店的台北捷運拉麵地圖。"
 tags:
   - foodie
   - ramen
@@ -8,41 +8,38 @@ date: 2022-04-15
 lastMod: 2026-10-06T00:00:00+08:00
 ---
 
-Chuiyan (炊煙) is a ramen shop in Sanchong, near Sanchong Elementary School station on the
-orange line.[^map]
+炊煙是三重的拉麵店，在橘線三重國小站附近。[^map]
 
-|              |                                                      |
-| ------------ | ---------------------------------------------------- |
-| **Visited**  | 2022-04-15, lunch                                    |
-| **Crowd**    | Two diners when I arrived, four when I left          |
-| **Rating**   | 6 stars                                              |
-| **Location** | [Google Maps](https://goo.gl/maps/aGYihvcQEMPtVvC1A) |
+|          |                                                      |
+| -------- | ---------------------------------------------------- |
+| **時段** | 2022-04-15 中午                                      |
+| **人流** | 到店時兩人，離店時四人                               |
+| **評分** | 6 顆星                                               |
+| **地點** | [Google 地圖](https://goo.gl/maps/aGYihvcQEMPtVvC1A) |
 
-## What I ate
+## 吃了什麼
 
-| Dish                 | Price  | Verdict                                                                                                                                         |
-| -------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Black garlic ramen   | NT$230 | The broth is rich and gelatinous but a little too sweet. The thick, firm noodles are good, and so are all three meats: chicken, pork belly and sous-vide pork. |
-| Chashu rice          | NT$60  | Chashu chunks with mayonnaise and shichimi. Everything in the bowl works, and it is cheap.                                                      |
-| Fried chicken        | NT$80  | Crisp skin, juicy meat.                                                                                                                         |
+| 品項     | 價格   | 心得                                                                       |
+| -------- | ------ | -------------------------------------------------------------------------- |
+| 黑蒜拉麵 | NT$230 | 湯頭濃厚帶膠質，但有點過甜。太麵偏硬，雞肉、五花豬和舒肥豬三種肉都不錯。 |
+| 叉燒飯   | NT$60  | 叉燒塊配美乃滋和七味粉，每一樣都很到位，價格也便宜。                     |
+| 炸雞     | NT$80  | 皮脆汁美。                                                                 |
 
-![Black garlic ramen with chicken, pork belly and sous-vide pork, a soft-boiled egg, bean sprouts, spring onion and nori, next to the fried chicken](/images/foodie/chuiyan-black-garlic-ramen.jpg)
+![黑蒜拉麵，有雞肉、五花豬、舒肥豬、溏心蛋、豆芽、蔥花和海苔，旁邊是炸雞](/images/foodie/chuiyan-black-garlic-ramen.jpg)
 
-![Chashu rice topped with mayonnaise, shichimi and spring onion](/images/foodie/chuiyan-chashu-rice.jpg)
+![叉燒飯，上面淋了美乃滋、撒上七味粉和蔥花](/images/foodie/chuiyan-chashu-rice.jpg)
 
-## Good to know
+## 特殊注意事項
 
-- Iced water is free.
-- You pay at the counter; there is no ticket machine.
-- There are no baskets for your bag.
-- The floor noticeably slopes, and the fit-out looks like it was done on a budget.
+- 附冰水。
+- 人工結帳，沒有點餐機。
+- 沒有置物籃。
+- 地板感覺得到是斜的，裝潢看起來沒花太多力氣。
 
-## Finding the next bowl
+## 找下一碗
 
-The Taipei Metro ramen map by 許正宜 places ramen shops by their nearest MRT station, with input
-from the Taiwan Ramen Lovers group (台灣拉麵愛好會). Chuiyan is listed under Sanchong Elementary
-School. This is the 2022-04-16 edition.
+許正宜製作的「臺北捷運拉麵地圖」依最近的捷運站標出拉麵店，並參考了「台灣拉麵愛好會」大家的意見。炊煙就列在三重國小站。下圖是 2022-04-16 的版本。
 
-![Taipei Metro ramen map, 2022-04-16 edition, by 許正宜](/images/foodie/taipei-metro-ramen-map.jpg)
+![臺北捷運拉麵地圖，2022-04-16 版，許正宜製作](/images/foodie/taipei-metro-ramen-map.jpg)
 
-[^map]: Taipei Metro ramen map by 許正宜, 2022-04-16 edition, shown at the end of this post.
+[^map]: 許正宜製作的臺北捷運拉麵地圖，2022-04-16 版，附在本文最後。
