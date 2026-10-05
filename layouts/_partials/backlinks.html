@@ -1,0 +1,32 @@
+{{- /*
+  Logseq-style backlinks: every blog post whose raw Markdown mentions this page's file name.
+  Mounted by custom/content-end.html; styled with Hextra's utility classes so it needs no CSS.
+*/ -}}
+{{- $re := .File.BaseFileName -}}
+{{- $backlinks := slice -}}
+{{- range where .Site.RegularPages "Type" "blog" -}}
+  {{- if and (findRE $re .RawContent) (ne $re .File.BaseFileName) -}}
+    {{- $backlinks = $backlinks | append . -}}
+  {{- end -}}
+{{- end -}}
+<aside class="hx:mt-12 hx:border-t hx:border-gray-200 hx:dark:border-neutral-800 hx:pt-6 hx:text-sm">
+  {{- if gt (len $backlinks) 0 }}
+  <h3 class="hx:font-semibold hx:mb-2">Backlinks</h3>
+  <ul class="hx:list-disc hx:ps-5">
+    {{- range $backlinks }}
+    <li><a class="hx:text-primary-600 hx:underline" href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  <p class="hx:text-gray-500">No notes link to this note.</p>
+  {{- end }}
+  {{- $related := .Site.RegularPages.Related . | complement $backlinks | first 3 }}
+  {{- with $related }}
+  <h3 class="hx:font-semibold hx:mt-4 hx:mb-2">Slightly related</h3>
+  <ul class="hx:list-disc hx:ps-5">
+    {{- range . }}
+    <li><a class="hx:text-primary-600 hx:underline" href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</aside>

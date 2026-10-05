@@ -1,0 +1,4 @@
+{{- /* Hextra hook rendered after every page's content; backlinks only make sense on blog posts. */ -}}
+{{- if and .IsPage (eq .Type "blog") -}}
+  {{- partial "backlinks.html" . -}}
+{{- end -}}

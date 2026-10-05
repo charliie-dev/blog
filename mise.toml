@@ -1,0 +1,16 @@
+# go 只為了 Hugo Modules 抓 theme;版本由 go.mod 的 `toolchain` 行決定(mise 讀它當
+# idiomatic version file)。go.mod 的 `go` 指令刻意比 toolchain 低一個 patch:hugo 每次
+# 解析模組都會重寫 go.mod,兩者同版時會把 toolchain 行拿掉。
+[settings]
+idiomatic_version_file_enable_tools = ["go"]
+
+[tools]
+hugo = "0.167.0"
+
+[tasks.build]
+description = "Build the site into public/"
+run = "hugo --gc --minify"
+
+[tasks.serve]
+description = "Serve with drafts and live reload"
+run = "hugo server -D --disableFastRender"

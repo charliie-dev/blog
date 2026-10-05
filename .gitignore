@@ -1,2 +1,4 @@
 .hugo_build.lock
 .DS_Store
+public/
+hugo.direct.sum

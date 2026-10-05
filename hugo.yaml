@@ -1,0 +1,118 @@
+baseURL: https://blog.charliie.dev
+locale: en-us
+title: Blog
+enableRobotsTXT: true
+
+# Hextra as a Hugo module; the version is pinned in go.mod too (Renovate updates both).
+module:
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/imfing/hextra
+      version: v0.13.0
+
+services:
+  googleAnalytics:
+    id: G-0YYDW2B6FM
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # Logseq exports carry raw HTML
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+
+enableInlineShortcodes: true
+
+outputs:
+  home: [html, rss]
+  section: [html, rss]
+  page: [html, markdown]
+
+menu:
+  main:
+    - name: Blog
+      pageRef: /page
+      weight: 1
+    - name: Categories
+      pageRef: /categories
+      weight: 2
+    - name: Tags
+      pageRef: /tags
+      weight: 3
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: GitHub
+      url: https://github.com/charliie-dev
+      weight: 5
+      params:
+        icon: github
+    - name: Mastodon
+      url: https://mstdn.social/@charliie
+      weight: 6
+      params:
+        icon: mastodon
+    - name: RSS
+      url: /index.xml
+      weight: 7
+      params:
+        icon: rss
+
+params:
+  description: HipHop enthusiast, PKM learner and Coffee addict.
+
+  page:
+    width: normal
+    contextMenu:
+      enable: true
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: unicorn72x72.png
+      width: 28
+      height: 28
+      link: /
+
+  footer:
+    displayCopyright: true
+    displayPoweredBy: false
+
+  theme:
+    default: system
+    displayToggle: true
+
+  highlight:
+    copy:
+      enable: true
+      display: hover
+
+  editURL:
+    enable: false
+
+  search:
+    enable: true
+    type: flexsearch
+
+  imageZoom:
+    enable: true
+
+  externalLinkDecoration: true
+
+  blog:
+    list:
+      displayTags: true
+      sortBy: date
+      sortOrder: desc
+    article:
+      displayPagination: true
