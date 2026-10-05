@@ -29,8 +29,8 @@ element followed by the numbers:[^progress]
 ```
 
 Call it with the current value and the maximum, for example `{{progress 47,195}}`. The bar's
-colours and rounded corners come from CSS; the matching style is the progress bar section of
-[Logseq | CSS_Theme]({{< relref "CSS_Theme.md" >}}).
+colours and rounded corners come from CSS; the matching style is in
+[Logseq | CSS_Theme: Progress bar]({{< relref "CSS_Theme.md#progress-bar" >}}).
 
 ## Editor
 

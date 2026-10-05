@@ -1,15 +1,22 @@
 ---
 title: Logseq | CSS_Theme
-description: "A collection of custom.css snippets for styling Logseq: a progress bar, task colours by state, more compact query results, highlighting the block being edited, a custom right sidebar and a query dashboard. It also includes a movable search box, ruby annotations through the logseq-wrap plugin and colouring blocks by tag. Most snippets come from the Logseq Discord and community themes, each linked to its source."
+description: "custom.css snippets for Logseq grouped by what they change: blocks and the editor (progress bar, edited block, highlight colours, resizable blocks, ruby annotations), the toolbar, right sidebar and search box, tasks and tags (task colours, tag icons, coloured blocks), query results (compact results, hidden table controls, a reading-status dashboard), the plugin marketplace and iOS. Sources are listed at the end."
 tags:
   - logseq
 date: 2022-04-08
-lastMod: 2022-04-21
+lastMod: 2026-10-05
 ---
 
-Progress par style in `custom.css`:
+Snippets for Logseq's `custom.css`, grouped by what they change. Each section says what the
+snippet does, then shows it; long snippets are folded. Sources are collected at the bottom.
 
-- [pengx17/logseq-dev-theme: custom.css (L823–L838)](https://github.com/pengx17/logseq-dev-theme/blob/5feb39e5ec8e430a293ffe78736612c666a9806c/custom.css#L823-L838)
+## Blocks and the editor
+
+### Progress bar
+
+Styles the bar drawn by the `progress` macro from
+[Logseq | EDN_Settings]({{< relref "EDN_Settings.md#progress-bar" >}}): rounded, slim, and
+coloured with the theme's own variables:[^progress]
 
 ```css
 /* Progress bar */
@@ -31,11 +38,86 @@ progress::-webkit-progress-value {
 }
 ```
 
-- `id:: 622dec42-eb38-4427-b068-e7b786a82f4f`
+### Highlight the block being edited
 
----
+Gives the editing textarea its own background, so the block in edit mode stands out:[^editing]
 
-Custom CSS to move arrows to left - more close to any web-browser layout
+```css
+.editor-inner textarea {
+  background-color: coral;
+}
+```
+
+### Highlighted text colours
+
+Changes the foreground and background of text highlighted with `==`:[^mark]
+
+```css
+mark {
+  background: #fef3ac;
+  color: #262626;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+```
+
+### Resizable blocks
+
+An experiment that turns child blocks into resizable boxes that sit side by side like
+flexboxes:[^resizable]
+
+```css
+/* ls-blocks: resizable children blocks with depth levels */
+.block-children .ls-block {
+  display: inline-block;
+  margin: 6px;
+  background-color: rgba(50, 55, 60, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.46);
+  padding: 2px 6px 8px 6px;
+  resize: both;
+  overflow: auto;
+  min-width: 160px;
+  min-height: 30px;
+  width: fit-content;
+  height: fit-content;
+  vertical-align: top;
+}
+```
+
+### Ruby annotations
+
+**Goal.** Add small annotations above text, such as readings above kanji, with the logseq-wrap
+plugin.
+
+**How.** Add a wrap entry to the plugin settings that wraps the selection in a Hiccup `ruby`
+element:[^ruby-settings]
+
+```
+"wrap-ruby": {
+    "label": "ruby",
+    "binding": "",
+    "template": "[:ruby \"$^\" [:rt \"\"]]",
+    "icon": "<svg width=\"200px\" height=\"200px\" viewBox=\"0 0 76 76\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" enable-background=\"new 0 0 76.00 76.00\" xml:space=\"preserve\"><path fill=\"#eeeeee\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 31.6666,30.0834L 42.7499,30.0834L 42.7499,33.2501L 42.7499,52.2501L 45.9165,52.2501L 45.9165,57.0001L 31.6666,57.0001L 31.6666,52.2501L 34.8332,52.2501L 34.8332,34.8335L 31.6666,34.8335L 31.6666,30.0834 Z M 38.7917,19C 40.9778,19 42.75,20.7722 42.75,22.9583C 42.75,25.1445 40.9778,26.9167 38.7917,26.9167C 36.6055,26.9167 34.8333,25.1445 34.8333,22.9583C 34.8333,20.7722 36.6055,19 38.7917,19 Z \" /></svg>"
+  },
+```
+
+Then shade the annotated text in `custom.css`, a tweak from @canniblox:
+
+```css
+ruby {
+  background-color: #b0bec550;
+}
+```
+
+An earlier #tips thread goes further and shows the annotation only on hover; its CSS is in the
+linked messages.[^ruby-css][^ruby-hover]
+
+## Toolbar and layout
+
+### A browser-like toolbar
+
+Moves the toolbar icons to the left, closer to a web browser's layout, hides the home button and
+puts a gap before the plugin icons:
 
 ```css
 /* Toolbar icons */
@@ -69,134 +151,9 @@ body:not([data-page="home"]) .r > div:nth-child(2) {
 }
 ```
 
----
+### Right sidebar layout
 
-Coloring for tasks according this diagram by @danzu
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/953050791298605196)
-
-```css
-/* TODO colors */
-.form-checkbox:checked {
-  background-color: #2c89d9;
-}
-.block-marker.NOW,
-.block-marker.DOING {
-  color: #27ae9e;
-}
-.block-marker.LATER {
-  color: #e88438;
-}
-.block-marker.TODO {
-  color: #d3455b;
-}
-.block-marker.waiting {
-  color: #f6c423;
-}
-```
-
----
-
-Custom CSS for making query results more compact
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/953075525394522173)
-
-```css
-/* Compact query results */
-.custom-query-title {
-  display: flex;
-}
-.custom-query .color-level,
-.custom-query .table-auto {
-  margin: 0;
-}
-.custom-query .flex.flex-row.align-items.mt-2 {
-  justify-content: flex-end;
-  margin-top: -1.4em;
-}
-```
-
----
-
-iOS css: Move the toggle a bit from the edge of the screen and set it to always visible on iOS
-
-- [Logseq Discord #ios-app](https://discord.com/channels/725182569297215569/924907384730689566/953857009311186964)
-
-```css
-/* iOS: expand and collapse controls (start) */
-
-/* Position the toggle */
-html.is-ios .block-control {
-  position: absolute;
-  right: 0px;
-  margin-right: -14px;
-}
-
-/* Toggle size */
-html.is-ios .block-control svg {
-  width: 24px !important;
-  height: 24px !important;
-}
-/* Rotate the arrow when collapsed */
-html.is-ios .block-control .collapsed svg[aria-hidden="true"] {
-  transform: rotate(180deg);
-}
-/* Show the toggle when expanded */
-html.is-ios div[haschild="true"] > div > div > .block-control .control-hide {
-  display: block;
-}
-
-/* Also show the toggle when collapsed */
-html.is-ios
-  div[data-collapsed="false"]
-  > div
-  > div
-  > .block-control
-  .control-hide {
-  display: block;
-}
-html.is-ios .page-blocks-inner {
-  padding-left: 10px;
-  padding-right: 4px;
-}
-
-/* Hide the toggle in flashcards */
-html.is-ios .cards-review .ls-card .block-control {
-  display: none;
-}
-/* iOS: expand and collapse controls (end) */
-```
-
----
-
-Dim installed plugins in Marketplace, make installable plugins easier to see (maybe could be a default rule ?)
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/958162293366079509)
-
-```css
-/* Marketplace: hide installed plugins */
-.cp__plugins-marketplace .cp__plugins-item-card.market.installed {
-  opacity: 0.4;
-}
-```
-
----
-
-Modify the style of the block being edited
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/959351405393612800)
-
-```css
-.editor-inner textarea {
-  background-color: coral;
-}
-```
-
----
-
-Custom right sidebar layout
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/961641146445078528)
+Gives the right sidebar a coloured top bar and card-like items with a light shadow:[^sidebar]
 
 ```css
 /* Right sidebar layout */
@@ -233,418 +190,10 @@ div.sidebar-item.content.color-level.px-4.shadow-lg {
 
 ![Custom right sidebar layout](/images/logseq/custom-right-sidebar-layout.png)
 
----
+### A movable search box
 
-Cool custom query dashboard.
-
-- [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961480208823767060)
-
-- [Felipe Ganash on X: Tengo bastante que leer y mucho que procesar](https://twitter.com/FelipeGanash/status/1510504058095816712?s=20&t=jDIBHRLvuQHerXI6LOlBXA)
-
-- Code:
-
-```css
-/* Query CSS for better readability */
-
-/* Tip: text behaviour inside the table */
-.whitespace-nowrap {
-  white-space: initial;
-  min-width: 170px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  margin-left: 0px;
-}
-
-/* The whole table container */
-.overflow-x-auto {
-  min-width: 1100px;
-  margin-left: -170px;
-}
-
-/* The top of the title */
-th {
-  font-size: 18px;
-  font-weight: 500;
-  background-color: var(--ls-secondary-background-color);
-  text-transform: capitalize;
-  padding: 10px 8px;
-}
-
-th .mr-1 {
-  color: var(--ls-link-text-color-amarillo);
-}
-
-/* Community CSS that compacts the options bar at the top */
-
-.custom-query-title {
-  display: flex;
-}
-.custom-query .color-level,
-.custom-query .table-auto {
-  margin-top: 5px;
-}
-.custom-query .flex.flex-row.align-items.mt-2 {
-  justify-content: flex-end;
-  margin-top: -1.4em;
-  position: relative;
-  z-index: 1;
-}
-
-/* Status CSS */
-
-/* Status: to read */
-
-.page-reference[data-ref^="para leer"] .page-ref,
-.page-ref[data-ref^="para leer"] {
-  background-color: #e90000;
-  color: #fff !important;
-  padding: 1px 10px 1px 0px;
-  border-radius: 5px;
-}
-
-.recent-item[data-ref^="para leer"] a,
-.favorite-item[data-ref="Para Leer"] a,
-.title[data-ref^="para leer"] {
-  color: #transparent;
-}
-
-.recent-item[data-ref^="para leer"],
-.favorite-item[data-ref="Para Leer"] {
-  position: relative;
-}
-.recent-item[data-ref^="para leer"] .page-icon,
-.favorite-item[data-ref="Para Leer"] .page-icon {
-  visibility: hidden;
-}
-
-.page-reference[data-ref^="para leer"] .page-ref:before,
-.page-ref[data-ref^="para leer"]:before {
-  content: "🟥 ";
-  margin-right: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px 0px 0px 4px;
-}
-
-.recent-item[data-ref^="para leer"]:before,
-.favorite-item[data-ref="Para Leer"]:before {
-  content: "🟥" !important;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.title[data-ref^="para leer"]:before {
-  content: "🟥 " !important;
-  margin-right: 2px;
-}
-
-.recent-item[data-ref^="para leer"]:before,
-.favorite-item[data-ref="Para Leer"]:before {
-  position: absolute;
-  left: 20px;
-  top: 3px;
-}
-
-/* Status: reading */
-
-.page-reference[data-ref="leyendo"] .page-ref,
-.page-ref[data-ref="leyendo"] {
-  background-color: #ff8b00;
-  color: #fff !important;
-  padding: 1px 10px 1px 0px;
-  border-radius: 5px;
-}
-
-.recent-item[data-ref="leyendo"] a,
-.favorite-item[data-ref="Leyendo"] a,
-.title[data-ref="leyendo"] {
-  color: #transparent;
-}
-
-.recent-item[data-ref="leyendo"],
-.favorite-item[data-ref="Leyendo"] {
-  position: relative;
-}
-.recent-item[data-ref="leyendo"] .page-icon,
-.favorite-item[data-ref="Leyendo"] .page-icon {
-  visibility: hidden;
-}
-
-.page-reference[data-ref="leyendo"] .page-ref:before,
-.page-ref[data-ref="leyendo"]:before {
-  content: "🟧 ";
-  margin-right: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px 0px 0px 4px;
-}
-
-.recent-item[data-ref="leyendo"]:before,
-.favorite-item[data-ref="Leyendo"]:before {
-  content: "🟧" !important;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.title[data-ref="leyendo"]:before {
-  content: "🟧 " !important;
-  margin-right: 2px;
-}
-
-.recent-item[data-ref="leyendo"]:before,
-.favorite-item[data-ref="Leyendo"]:before {
-  position: absolute;
-  left: 20px;
-  top: 3px;
-}
-
-/* Status: studying */
-
-.page-reference[data-ref="estudiando"] .page-ref,
-.page-ref[data-ref="estudiando"] {
-  background-color: #0066fc;
-  color: #fff !important;
-  padding: 1px 10px 1px 0px;
-  border-radius: 5px;
-}
-
-.recent-item[data-ref="estudiando"] a,
-.favorite-item[data-ref="Estudiando"] a,
-.title[data-ref="estudiando"] {
-  color: #transparent;
-}
-
-.recent-item[data-ref="estudiando"],
-.favorite-item[data-ref="Estudiando"] {
-  position: relative;
-}
-.recent-item[data-ref="estudiando"] .page-icon,
-.favorite-item[data-ref="Estudiando"] .page-icon {
-  visibility: hidden;
-}
-
-.page-reference[data-ref="estudiando"] .page-ref:before,
-.page-ref[data-ref="estudiando"]:before {
-  content: "🟦 ";
-  margin-right: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px 0px 0px 4px;
-}
-
-.recent-item[data-ref="estudiando"]:before,
-.favorite-item[data-ref="Estudiando"]:before {
-  content: "🟦" !important;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.title[data-ref="estudiando"]:before {
-  content: "🟦 " !important;
-  margin-right: 2px;
-}
-
-.recent-item[data-ref="estudiando"]:before,
-.favorite-item[data-ref="Estudiando"]:before {
-  position: absolute;
-  left: 20px;
-  top: 3px;
-}
-
-/* Status: analysed, with notes */
-
-.page-reference[data-ref="analizado - notas"] .page-ref,
-.page-ref[data-ref="analizado - notas"] {
-  background-color: #ca24ff;
-  color: #fff !important;
-  padding: 1px 10px 1px 0px;
-  border-radius: 5px;
-}
-
-.recent-item[data-ref="analizado - notas"] a,
-.favorite-item[data-ref="Analizado - Notas"] a,
-.title[data-ref="analizado - notas"] {
-  color: #transparent;
-}
-
-.recent-item[data-ref="analizado - notas"],
-.favorite-item[data-ref="Analizado - Notas"] {
-  position: relative;
-}
-.recent-item[data-ref="analizado - notas"] .page-icon,
-.favorite-item[data-ref="Analizado - Notas"] .page-icon {
-  visibility: hidden;
-}
-
-.page-reference[data-ref="analizado - notas"] .page-ref:before,
-.page-ref[data-ref="analizado - notas"]:before {
-  content: "🟪 ";
-  margin-right: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px 0px 0px 4px;
-}
-
-.recent-item[data-ref="analizado - notas"]:before,
-.favorite-item[data-ref="Analizado - Notas"]:before {
-  content: "🟪" !important;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.title[data-ref="analizado - notas"]:before {
-  content: "🟪 " !important;
-  margin-right: 2px;
-}
-
-.recent-item[data-ref="analizado - notas"]:before,
-.favorite-item[data-ref="Analizado - Notas"]:before {
-  position: absolute;
-  left: 20px;
-  top: 3px;
-}
-
-/* Status: finished */
-
-.page-reference[data-ref="terminado"] .page-ref,
-.page-ref[data-ref="terminado"] {
-  background-color: #00bf00;
-  color: #fff !important;
-  padding: 1px 10px 1px 0px;
-  border-radius: 5px;
-}
-
-.recent-item[data-ref="terminado"] a,
-.favorite-item[data-ref="Terminado"] a,
-.title[data-ref="terminado"] {
-  color: #transparent;
-}
-
-.recent-item[data-ref="terminado"],
-.favorite-item[data-ref="Terminado"] {
-  position: relative;
-}
-.recent-item[data-ref="terminado"] .page-icon,
-.favorite-item[data-ref="Terminado"] .page-icon {
-  visibility: hidden;
-}
-
-.page-reference[data-ref="terminado"] .page-ref:before,
-.page-ref[data-ref="terminado"]:before {
-  content: "🟩 ";
-  margin-right: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px 0px 0px 4px;
-}
-
-.recent-item[data-ref="terminado"]:before,
-.favorite-item[data-ref="Terminado"]:before {
-  content: "🟩" !important;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.title[data-ref="terminado"]:before {
-  content: "🟩 " !important;
-  margin-right: 2px;
-}
-
-.recent-item[data-ref="terminado"]:before,
-.favorite-item[data-ref="Terminado"]:before {
-  position: absolute;
-  left: 20px;
-  top: 3px;
-}
-
-/* Status: reread */
-
-.page-reference[data-ref="releer"] .page-ref,
-.page-ref[data-ref="releer"] {
-  background-color: #8c512e;
-  color: #fff !important;
-  padding: 1px 10px 1px 0px;
-  border-radius: 5px;
-}
-
-.recent-item[data-ref="releer"] a,
-.favorite-item[data-ref="Releer"] a,
-.title[data-ref="releer"] {
-  color: #transparent;
-}
-
-.recent-item[data-ref="releer"],
-.favorite-item[data-ref="Releer"] {
-  position: relative;
-}
-.recent-item[data-ref="releer"] .page-icon,
-.favorite-item[data-ref="Releer"] .page-icon {
-  visibility: hidden;
-}
-
-.page-reference[data-ref="releer"] .page-ref:before,
-.page-ref[data-ref="releer"]:before {
-  content: "🟫 ";
-  margin-right: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px 0px 0px 4px;
-}
-
-.recent-item[data-ref="releer"]:before,
-.favorite-item[data-ref="Releer"]:before {
-  content: "🟫" !important;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.title[data-ref="releer"]:before {
-  content: "🟫 " !important;
-  margin-right: 2px;
-}
-
-.recent-item[data-ref="releer"]:before,
-.favorite-item[data-ref="Releer"]:before {
-  position: absolute;
-  left: 20px;
-  top: 3px;
-}
-```
-
-![Demo](https://pbs.twimg.com/media/FPZjRvBXMAEbOy3.jpg)
-
----
-
-With some extra css, we can highlight the `ruby` and make the annotation appear only on hover.
-
-- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/905775051847122965)
-
-- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/905778303196098570)
-
-- Adding rubi (small annotations on top) with the logseq-wrap plugin. this is what I added in the plugin setting:
-
-  - [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963386351703719996)
-
-```
-"wrap-ruby": {
-    "label": "ruby",
-    "binding": "",
-    "template": "[:ruby \"$^\" [:rt \"\"]]",
-    "icon": "<svg width=\"200px\" height=\"200px\" viewBox=\"0 0 76 76\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" enable-background=\"new 0 0 76.00 76.00\" xml:space=\"preserve\"><path fill=\"#eeeeee\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 31.6666,30.0834L 42.7499,30.0834L 42.7499,33.2501L 42.7499,52.2501L 45.9165,52.2501L 45.9165,57.0001L 31.6666,57.0001L 31.6666,52.2501L 34.8332,52.2501L 34.8332,34.8335L 31.6666,34.8335L 31.6666,30.0834 Z M 38.7917,19C 40.9778,19 42.75,20.7722 42.75,22.9583C 42.75,25.1445 40.9778,26.9167 38.7917,26.9167C 36.6055,26.9167 34.8333,25.1445 34.8333,22.9583C 34.8333,20.7722 36.6055,19 38.7917,19 Z \" /></svg>"
-  },
-```
-
-- and this is what i added in custom.css courtesy of @canniblox
-
-```css
-ruby {
-  background-color: #b0bec550;
-}
-```
-
----
-
-Moveable search box
-
-- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963746504185634868)
+Removes the search overlay and its animation and anchors the search panel to the top left at a
+fixed size:[^search]
 
 ```css
 .ui__modal-overlay div {
@@ -681,49 +230,39 @@ Moveable search box
 }
 ```
 
----
+## Tasks and tags
 
-To remove/hide/format "Table View", "Set properties", etc. in query results.
+### Task colours by state
 
-- [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/964005052060672040)
+Colours each task marker by its state, following @danzu's task-state diagram in
+[Logseq | Tips]({{< relref "Tips.md#task-states-at-a-glance" >}}):[^task-colours]
 
 ```css
-/* Hide "Set properties" */
-.text-sm.mr-1 {
-  display: none;
+/* TODO colors */
+.form-checkbox:checked {
+  background-color: #2c89d9;
 }
-
-/* Hide "table view" from queries */
-div.mx-2 {
-  display: none;
+.block-marker.NOW,
+.block-marker.DOING {
+  color: #27ae9e;
 }
-
-/* Hide the table-view selector */
-span.wrapper.transition-colors.ease-in-out {
-  display: none;
+.block-marker.LATER {
+  color: #e88438;
 }
-
-/* Remove the actual query displayed in simple query tables */
-div.dsl-query > div.custom-query > div.flex > div.content {
-  display: none;
+.block-marker.TODO {
+  color: #d3455b;
 }
-
-/* Format the results count */
-span.opacity-60.text-sm.ml-2.results-count {
-  font-size: 0.7rem;
-  font-weight: 400;
+.block-marker.waiting {
+  color: #f6c423;
 }
 ```
 
----
+### Icons and fonts for specific tags
 
-Use `[data-ref="value"]` to modify the CSS attributes(icon, font) for specific tags. For example the following will apply the following changes to tags named "literature note".
+**Goal.** Change how particular tags look.
 
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966165573627150357)
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966165913621647410)
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966181728186163251)
+**How.** Select a tag by its name with `[data-ref="value"]`. This adds 📝 after tags whose name ends
+in "literature note":[^tag-css][^tag-css-2][^tag-css-3]
 
 ```css
 a.tag[data-ref$="literature note"]:after {
@@ -732,11 +271,15 @@ a.tag[data-ref$="literature note"]:after {
 }
 ```
 
+This gives a tag its own font:
+
 ```css
 a.tag[data-ref$="TAG_NAME"] {
   font-family: "FAMILY_NAME";
 }
 ```
+
+And this puts 🚀 before references to pages whose name starts with "Go Live":
 
 ```css
 span[data-ref^="Go Live"] .page-ref::before {
@@ -744,11 +287,14 @@ span[data-ref^="Go Live"] .page-ref::before {
 }
 ```
 
----
+### Coloured blocks by tag
 
-Colored block via tags.
+**Goal.** Turn a block into a coloured callout by tagging it, for example `#1note`.
 
-- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967293385062903859)
+**How.** Style the blocks whose own references include the tag, hide the tag text and draw an icon
+in its place with a base64 image mask. Dark mode gets its own colours.[^note-tag]
+
+{{% details title="CSS for `#1note`" closed="true" %}}
 
 ```css
 /* Tag: note */
@@ -766,7 +312,7 @@ div[data-refs-self*="1note"] {
 }
 
 a.tag[data-ref="1note"] {
-  olor: transparent;
+  color: transparent;
   font-size: 0px;
 }
 
@@ -805,13 +351,12 @@ a.tag[data-ref="1note"]:before {
 }
 ```
 
----
+{{% /details %}}
 
-Good Images for questions and answers, and turn icons into base64.
+The same pattern makes question and answer callouts, tagged `#1pregunta` and `#1respuesta`, with
+their icons also stored as base64:[^qa-tags][^qa-tags-2]
 
-- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967459249171071056)
-
-- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967462539581603980)
+{{% details title="CSS for `#1pregunta` and `#1respuesta`" closed="true" %}}
 
 ```css
 /* Questions, answers, notes, ideas, executed ideas and claims */
@@ -907,7 +452,7 @@ div[data-refs-self*="1respuesta"] {
 }
 
 a.tag[data-ref="1respuesta"] {
-  olor: transparent;
+  color: transparent;
   font-size: 0px;
 }
 
@@ -971,43 +516,526 @@ div[data-refs-self*="1respuesta"] .bullet-container .bullet {
 }
 ```
 
----
+{{% /details %}}
 
-A funny experiment to turn blocks / children-blocks into resizable blocks that behave like flex-boxes
+## Query results
 
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
+### Compact query results
+
+Puts the query title and its controls on one line and removes the extra margins:[^compact]
 
 ```css
-/* ls-blocks: resizable children blocks with depth levels */
-.block-children .ls-block {
-  display: inline-block;
-  margin: 6px;
-  background-color: rgba(50, 55, 60, 0.5);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.46);
-  padding: 2px 6px 8px 6px;
-  resize: both;
-  overflow: auto;
-  min-width: 160px;
-  min-height: 30px;
-  width: fit-content;
-  height: fit-content;
-  vertical-align: top;
+/* Compact query results */
+.custom-query-title {
+  display: flex;
+}
+.custom-query .color-level,
+.custom-query .table-auto {
+  margin: 0;
+}
+.custom-query .flex.flex-row.align-items.mt-2 {
+  justify-content: flex-end;
+  margin-top: -1.4em;
 }
 ```
 
----
+### Hide table controls in query results
 
-Change my highlighted text's fore and back colors
-
-- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/950759618638917652)
+Hides "Set properties", the table view toggle and the query text shown above simple query tables,
+and shrinks the results count:[^table-controls]
 
 ```css
-mark {
-  background: #fef3ac;
-  color: #262626;
-  padding: 2px 4px;
-  border-radius: 3px;
+/* Hide "Set properties" */
+.text-sm.mr-1 {
+  display: none;
+}
+
+/* Hide "table view" from queries */
+div.mx-2 {
+  display: none;
+}
+
+/* Hide the table-view selector */
+span.wrapper.transition-colors.ease-in-out {
+  display: none;
+}
+
+/* Remove the actual query displayed in simple query tables */
+div.dsl-query > div.custom-query > div.flex > div.content {
+  display: none;
+}
+
+/* Format the results count */
+span.opacity-60.text-sm.ml-2.results-count {
+  font-size: 0.7rem;
+  font-weight: 400;
 }
 ```
 
----
+### A reading-status dashboard
+
+**Goal.** Track reading material by status in a query table, as Felipe Ganash does.
+
+**How.** Widen the query table, make the header bolder, and give each status page, such as
+"para leer" (to read) or "leyendo" (reading), its own colour and square emoji wherever it is
+referenced, in recent items or in favourites.[^dashboard][^dashboard-x]
+
+{{% details title="CSS for the dashboard" closed="true" %}}
+
+```css
+/* Query CSS for better readability */
+
+/* Tip: text behaviour inside the table */
+.whitespace-nowrap {
+  white-space: initial;
+  min-width: 170px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-left: 0px;
+}
+
+/* The whole table container */
+.overflow-x-auto {
+  min-width: 1100px;
+  margin-left: -170px;
+}
+
+/* The top of the title */
+th {
+  font-size: 18px;
+  font-weight: 500;
+  background-color: var(--ls-secondary-background-color);
+  text-transform: capitalize;
+  padding: 10px 8px;
+}
+
+th .mr-1 {
+  color: var(--ls-link-text-color-amarillo);
+}
+
+/* Community CSS that compacts the options bar at the top */
+
+.custom-query-title {
+  display: flex;
+}
+.custom-query .color-level,
+.custom-query .table-auto {
+  margin-top: 5px;
+}
+.custom-query .flex.flex-row.align-items.mt-2 {
+  justify-content: flex-end;
+  margin-top: -1.4em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Status CSS */
+
+/* Status: to read */
+
+.page-reference[data-ref^="para leer"] .page-ref,
+.page-ref[data-ref^="para leer"] {
+  background-color: #e90000;
+  color: #fff !important;
+  padding: 1px 10px 1px 0px;
+  border-radius: 5px;
+}
+
+.recent-item[data-ref^="para leer"] a,
+.favorite-item[data-ref="Para Leer"] a,
+.title[data-ref^="para leer"] {
+  color: transparent;
+}
+
+.recent-item[data-ref^="para leer"],
+.favorite-item[data-ref="Para Leer"] {
+  position: relative;
+}
+.recent-item[data-ref^="para leer"] .page-icon,
+.favorite-item[data-ref="Para Leer"] .page-icon {
+  visibility: hidden;
+}
+
+.page-reference[data-ref^="para leer"] .page-ref:before,
+.page-ref[data-ref^="para leer"]:before {
+  content: "🟥 ";
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.recent-item[data-ref^="para leer"]:before,
+.favorite-item[data-ref="Para Leer"]:before {
+  content: "🟥" !important;
+  margin-right: 2px;
+  font-size: 14px;
+}
+
+.title[data-ref^="para leer"]:before {
+  content: "🟥 " !important;
+  margin-right: 2px;
+}
+
+.recent-item[data-ref^="para leer"]:before,
+.favorite-item[data-ref="Para Leer"]:before {
+  position: absolute;
+  left: 20px;
+  top: 3px;
+}
+
+/* Status: reading */
+
+.page-reference[data-ref="leyendo"] .page-ref,
+.page-ref[data-ref="leyendo"] {
+  background-color: #ff8b00;
+  color: #fff !important;
+  padding: 1px 10px 1px 0px;
+  border-radius: 5px;
+}
+
+.recent-item[data-ref="leyendo"] a,
+.favorite-item[data-ref="Leyendo"] a,
+.title[data-ref="leyendo"] {
+  color: transparent;
+}
+
+.recent-item[data-ref="leyendo"],
+.favorite-item[data-ref="Leyendo"] {
+  position: relative;
+}
+.recent-item[data-ref="leyendo"] .page-icon,
+.favorite-item[data-ref="Leyendo"] .page-icon {
+  visibility: hidden;
+}
+
+.page-reference[data-ref="leyendo"] .page-ref:before,
+.page-ref[data-ref="leyendo"]:before {
+  content: "🟧 ";
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.recent-item[data-ref="leyendo"]:before,
+.favorite-item[data-ref="Leyendo"]:before {
+  content: "🟧" !important;
+  margin-right: 2px;
+  font-size: 14px;
+}
+
+.title[data-ref="leyendo"]:before {
+  content: "🟧 " !important;
+  margin-right: 2px;
+}
+
+.recent-item[data-ref="leyendo"]:before,
+.favorite-item[data-ref="Leyendo"]:before {
+  position: absolute;
+  left: 20px;
+  top: 3px;
+}
+
+/* Status: studying */
+
+.page-reference[data-ref="estudiando"] .page-ref,
+.page-ref[data-ref="estudiando"] {
+  background-color: #0066fc;
+  color: #fff !important;
+  padding: 1px 10px 1px 0px;
+  border-radius: 5px;
+}
+
+.recent-item[data-ref="estudiando"] a,
+.favorite-item[data-ref="Estudiando"] a,
+.title[data-ref="estudiando"] {
+  color: transparent;
+}
+
+.recent-item[data-ref="estudiando"],
+.favorite-item[data-ref="Estudiando"] {
+  position: relative;
+}
+.recent-item[data-ref="estudiando"] .page-icon,
+.favorite-item[data-ref="Estudiando"] .page-icon {
+  visibility: hidden;
+}
+
+.page-reference[data-ref="estudiando"] .page-ref:before,
+.page-ref[data-ref="estudiando"]:before {
+  content: "🟦 ";
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.recent-item[data-ref="estudiando"]:before,
+.favorite-item[data-ref="Estudiando"]:before {
+  content: "🟦" !important;
+  margin-right: 2px;
+  font-size: 14px;
+}
+
+.title[data-ref="estudiando"]:before {
+  content: "🟦 " !important;
+  margin-right: 2px;
+}
+
+.recent-item[data-ref="estudiando"]:before,
+.favorite-item[data-ref="Estudiando"]:before {
+  position: absolute;
+  left: 20px;
+  top: 3px;
+}
+
+/* Status: analysed, with notes */
+
+.page-reference[data-ref="analizado - notas"] .page-ref,
+.page-ref[data-ref="analizado - notas"] {
+  background-color: #ca24ff;
+  color: #fff !important;
+  padding: 1px 10px 1px 0px;
+  border-radius: 5px;
+}
+
+.recent-item[data-ref="analizado - notas"] a,
+.favorite-item[data-ref="Analizado - Notas"] a,
+.title[data-ref="analizado - notas"] {
+  color: transparent;
+}
+
+.recent-item[data-ref="analizado - notas"],
+.favorite-item[data-ref="Analizado - Notas"] {
+  position: relative;
+}
+.recent-item[data-ref="analizado - notas"] .page-icon,
+.favorite-item[data-ref="Analizado - Notas"] .page-icon {
+  visibility: hidden;
+}
+
+.page-reference[data-ref="analizado - notas"] .page-ref:before,
+.page-ref[data-ref="analizado - notas"]:before {
+  content: "🟪 ";
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.recent-item[data-ref="analizado - notas"]:before,
+.favorite-item[data-ref="Analizado - Notas"]:before {
+  content: "🟪" !important;
+  margin-right: 2px;
+  font-size: 14px;
+}
+
+.title[data-ref="analizado - notas"]:before {
+  content: "🟪 " !important;
+  margin-right: 2px;
+}
+
+.recent-item[data-ref="analizado - notas"]:before,
+.favorite-item[data-ref="Analizado - Notas"]:before {
+  position: absolute;
+  left: 20px;
+  top: 3px;
+}
+
+/* Status: finished */
+
+.page-reference[data-ref="terminado"] .page-ref,
+.page-ref[data-ref="terminado"] {
+  background-color: #00bf00;
+  color: #fff !important;
+  padding: 1px 10px 1px 0px;
+  border-radius: 5px;
+}
+
+.recent-item[data-ref="terminado"] a,
+.favorite-item[data-ref="Terminado"] a,
+.title[data-ref="terminado"] {
+  color: transparent;
+}
+
+.recent-item[data-ref="terminado"],
+.favorite-item[data-ref="Terminado"] {
+  position: relative;
+}
+.recent-item[data-ref="terminado"] .page-icon,
+.favorite-item[data-ref="Terminado"] .page-icon {
+  visibility: hidden;
+}
+
+.page-reference[data-ref="terminado"] .page-ref:before,
+.page-ref[data-ref="terminado"]:before {
+  content: "🟩 ";
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.recent-item[data-ref="terminado"]:before,
+.favorite-item[data-ref="Terminado"]:before {
+  content: "🟩" !important;
+  margin-right: 2px;
+  font-size: 14px;
+}
+
+.title[data-ref="terminado"]:before {
+  content: "🟩 " !important;
+  margin-right: 2px;
+}
+
+.recent-item[data-ref="terminado"]:before,
+.favorite-item[data-ref="Terminado"]:before {
+  position: absolute;
+  left: 20px;
+  top: 3px;
+}
+
+/* Status: reread */
+
+.page-reference[data-ref="releer"] .page-ref,
+.page-ref[data-ref="releer"] {
+  background-color: #8c512e;
+  color: #fff !important;
+  padding: 1px 10px 1px 0px;
+  border-radius: 5px;
+}
+
+.recent-item[data-ref="releer"] a,
+.favorite-item[data-ref="Releer"] a,
+.title[data-ref="releer"] {
+  color: transparent;
+}
+
+.recent-item[data-ref="releer"],
+.favorite-item[data-ref="Releer"] {
+  position: relative;
+}
+.recent-item[data-ref="releer"] .page-icon,
+.favorite-item[data-ref="Releer"] .page-icon {
+  visibility: hidden;
+}
+
+.page-reference[data-ref="releer"] .page-ref:before,
+.page-ref[data-ref="releer"]:before {
+  content: "🟫 ";
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.recent-item[data-ref="releer"]:before,
+.favorite-item[data-ref="Releer"]:before {
+  content: "🟫" !important;
+  margin-right: 2px;
+  font-size: 14px;
+}
+
+.title[data-ref="releer"]:before {
+  content: "🟫 " !important;
+  margin-right: 2px;
+}
+
+.recent-item[data-ref="releer"]:before,
+.favorite-item[data-ref="Releer"]:before {
+  position: absolute;
+  left: 20px;
+  top: 3px;
+}
+```
+
+{{% /details %}}
+
+![Reading-status dashboard](https://pbs.twimg.com/media/FPZjRvBXMAEbOy3.jpg)
+
+## Plugins
+
+### Dim installed plugins in the marketplace
+
+Fades the plugins that are already installed, so the ones still to install stand out:[^marketplace]
+
+```css
+/* Marketplace: hide installed plugins */
+.cp__plugins-marketplace .cp__plugins-item-card.market.installed {
+  opacity: 0.4;
+}
+```
+
+## iOS
+
+### Keep the collapse toggle visible on iOS
+
+Moves the collapse arrow a little away from the screen edge, makes it larger and keeps it visible
+whether the block is expanded or collapsed, except in flashcards:[^ios]
+
+```css
+/* iOS: expand and collapse controls (start) */
+
+/* Position the toggle */
+html.is-ios .block-control {
+  position: absolute;
+  right: 0px;
+  margin-right: -14px;
+}
+
+/* Toggle size */
+html.is-ios .block-control svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+/* Rotate the arrow when collapsed */
+html.is-ios .block-control .collapsed svg[aria-hidden="true"] {
+  transform: rotate(180deg);
+}
+/* Show the toggle when expanded */
+html.is-ios div[haschild="true"] > div > div > .block-control .control-hide {
+  display: block;
+}
+
+/* Also show the toggle when collapsed */
+html.is-ios
+  div[data-collapsed="false"]
+  > div
+  > div
+  > .block-control
+  .control-hide {
+  display: block;
+}
+html.is-ios .page-blocks-inner {
+  padding-left: 10px;
+  padding-right: 4px;
+}
+
+/* Hide the toggle in flashcards */
+html.is-ios .cards-review .ls-card .block-control {
+  display: none;
+}
+/* iOS: expand and collapse controls (end) */
+```
+
+[^progress]: [pengx17/logseq-dev-theme: custom.css (L823–L838)](https://github.com/pengx17/logseq-dev-theme/blob/5feb39e5ec8e430a293ffe78736612c666a9806c/custom.css#L823-L838)
+[^editing]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/959351405393612800)
+[^mark]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/950759618638917652)
+[^resizable]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
+[^ruby-settings]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963386351703719996)
+[^ruby-css]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/905775051847122965)
+[^ruby-hover]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/905778303196098570)
+[^sidebar]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/961641146445078528)
+[^search]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963746504185634868)
+[^task-colours]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/953050791298605196)
+[^tag-css]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966165573627150357)
+[^tag-css-2]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966165913621647410)
+[^tag-css-3]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966181728186163251)
+[^note-tag]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967293385062903859)
+[^qa-tags]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967459249171071056)
+[^qa-tags-2]: [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967462539581603980)
+[^compact]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/953075525394522173)
+[^table-controls]: [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/964005052060672040)
+[^dashboard]: [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961480208823767060)
+[^dashboard-x]: [Felipe Ganash on X: Tengo bastante que leer y mucho que procesar](https://twitter.com/FelipeGanash/status/1510504058095816712?s=20&t=jDIBHRLvuQHerXI6LOlBXA)
+[^marketplace]: [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/958162293366079509)
+[^ios]: [Logseq Discord #ios-app](https://discord.com/channels/725182569297215569/924907384730689566/953857009311186964)
