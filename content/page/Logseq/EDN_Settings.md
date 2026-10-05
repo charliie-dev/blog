@@ -34,7 +34,7 @@ Make `!=` looks like `≠`:
 ```edn
 :commands
 [
-  [“!=“ “≠”]
+  ["!=" "≠"]
 ]
 ```
 
@@ -44,7 +44,7 @@ A funny experiment to turn blocks / children-blocks into resizable blocks that b
 
 - [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
 
-```edn
+```css
 /* ls-blocks : resizeable children-blocks + depth levels */
 .block-children .ls-block {
                            display: inline-block;

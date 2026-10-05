@@ -31,7 +31,7 @@ progress::-webkit-progress-value {
 }
 ```
 
-- id:: 622dec42-eb38-4427-b068-e7b786a82f4f
+- `id:: 622dec42-eb38-4427-b068-e7b786a82f4f`
 
 ---
 
@@ -176,7 +176,7 @@ Dim installed plugins in Marketplace, make installable plugins easier to see (ma
 - [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/958162293366079509)
 
 ```css
-/* MARKETPLACE - hide installed {{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}===*/
+/* MARKETPLACE - hide installed =======================================*/
 .cp__plugins-marketplace .cp__plugins-item-card.market.installed {
   opacity: 0.4;
 }
@@ -634,7 +634,7 @@ With some extra css, we can highlight the `ruby` and make the annotation appear 
   },
 ```
 
-    + and this is what i added in custom.css courtesy of @canniblox
+- and this is what i added in custom.css courtesy of @canniblox
 
 ```css
 ruby {
@@ -816,8 +816,8 @@ Good Images for questions and answers, and turn icons into base64.
 - [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967462539581603980)
 
 ```css
-/**** {{< logseq/mark >}}{{< / logseq/mark >}}=== **** Preguntas, Respuestas, notas, ideas, 
- * ideas ejecutadas y Claims **** {{< logseq/mark >}}{{< / logseq/mark >}}=== ****/
+/**** ======= **** Preguntas, Respuestas, notas, ideas, 
+ * ideas ejecutadas y Claims **** ======= ****/
 
 div[data-refs-self*="1pregunta"] {
   background-color: rgba(255, 245, 245, 1);

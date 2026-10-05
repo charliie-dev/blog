@@ -116,7 +116,7 @@ Add icon to page property for better project-management and visualization.
 
 - I'm a big fan of namespaces and in this case, what makes the most sense to me is having a tag.
 
-- but one thought that quickly comes to my mind is the usage of the **icon:: page property**. You can perhaps have like a stop sign or like a green traffic light or something to signify that a project is either in motion or cancelled or has been completed. The benefit of this is that you can **easily query**, but also and arguably more importantly, you can **easily and visually see the status of a Projects** by looking at it or a link that's referring to it
+- but one thought that quickly comes to my mind is the usage of the **`icon::` page property**. You can perhaps have like a stop sign or like a green traffic light or something to signify that a project is either in motion or cancelled or has been completed. The benefit of this is that you can **easily query**, but also and arguably more importantly, you can **easily and visually see the status of a Projects** by looking at it or a link that's referring to it
 
 - I'm pretty sure you can still query for then you just have to use emoji in the query and I think that this makes a lot of sense and suit offers the best of both worlds. The easy query from the first and the visual look from the second.
 
@@ -138,7 +138,7 @@ Add `{{namespace keyword}}` in the Contents section to get automatic Table of Co
 
 - [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963821349917319219)
 
-- {{namespace Logseq}}
+- `{{namespace Logseq}}`
 
 ---
 

@@ -13,7 +13,7 @@ from @Jeddychan in Logseq's discord #.v-border-children
   Datalog ------ a query language used for databases
   Datascript --- a flavor of Datalog written in Clojure. Logseq currently uses Datascript.
   Datomic ----- a different flavor of Datalog written in Clojure. (Some tutorials for Datomic may be helpful, but ymmv)
-  Hiccup ------- a language used to generate HTML, you can use it in an advanced query's custom view ( :view )
+  Hiccup ------- a language used to generate HTML, you can use it in an advanced query's custom view ( `:view` )
 
 - Official Docs -  
   [Logseq Docs: Queries](https://logseq.github.io/#/page/queries)
@@ -79,14 +79,13 @@ from @cldwalker in Logseq's discord #.v-border-children
 
 Get all block's uuid
 
-```Clojure
+```clojure
 #+BEGIN_QUERY
 {:title "tmp"
  :view (fn [result] (for [r result] [:pre (pr-str r)]))
  :query [:find (pull ?b [*])
        :where
        [?b :block/uuid _]]}
- :view (fn [result] (for [r result] [:pre (pr-str r)]))
 #+END_QUERY
 ```
 
@@ -140,20 +139,20 @@ Query multiple tags
 Sorting based on a block property
 
 ```clojure
-    - query-table:: false
-      query-properties:: [:alias :birthday]
-      #+BEGIN_QUERY
-      {
-       :query [:find (pull ?b [*])
-            :where
-            [?b :block/properties ?bprops]
-            [(get ?bprops :birthday "nil") ?bs]
-            [(not= ?bs "nil")]]
-      :result-transform (fn [result]
-          (sort-by (fn [h]
-            (get-in h [:block/properties :verjaardag])) result))
-      }
-      #+END_QUERY
+- query-table:: false
+  query-properties:: [:alias :birthday]
+  #+BEGIN_QUERY
+  {
+   :query [:find (pull ?b [*])
+        :where
+        [?b :block/properties ?bprops]
+        [(get ?bprops :birthday "nil") ?bs]
+        [(not= ?bs "nil")]]
+  :result-transform (fn [result]
+      (sort-by (fn [h]
+        (get-in h [:block/properties :verjaardag])) result))
+  }
+  #+END_QUERY
 ```
 
 ---
@@ -225,7 +224,6 @@ Query for all the blocks which have a block property = current page, use the nam
   [?b :block/path-refs [:block/name "datalog"]]
   ]
  :inputs [:current-page]}
-}
 #+END_QUERY
 ```
 
@@ -247,7 +245,7 @@ Query for all the blocks which have a block property = current page, use the nam
 
   (sort-by (fn [h]
       (get h :block/priority "Z")) result))
-:collapsed? false}}
+:collapsed? false}
 #+END_QUERY
 ```
 
@@ -278,7 +276,7 @@ find block which are highlighted with ==
   :query [:find (pull ?b [*])
   :where
    [?b :block/content ?c]
-   [(re-pattern "{{< logseq/mark >}}.*{{< / logseq/mark >}}") ?regex]
+   [(re-pattern "==.*==") ?regex]
    [(re-find ?regex ?c)]
    ]}
 #+END_QUERY
@@ -711,8 +709,6 @@ release_smushed:: 20220429
 #+END_QUERY
 ```
 
-    +
-
 ---
 
 Using journal-date format in page property and query it.
@@ -784,7 +780,8 @@ Have a `property` field that I only fill with numbers (floats). Is it possible t
          [(< ?numf 50)]
          [(> ?numf 20)]
        ]
-}#+END_QUERY
+}
+#+END_QUERY
 ```
 
 - ***
