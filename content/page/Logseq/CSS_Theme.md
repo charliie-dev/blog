@@ -38,26 +38,24 @@ progress::-webkit-progress-value {
 Custom CSS to move arrows to left - more close to any web-browser layout
 
 ```css
-/***
-    Toobar icons
-***/
+/* Toolbar icons */
 
-/* shrink left toolbar */
+/* Shrink the left toolbar */
 .cp__header > .l {
   width: auto;
 }
 
-/* move all icons to left*/
+/* Move all icons to the left */
 .cp__header > .r {
   justify-content: flex-start;
 }
 
-/* hide home button (i don't use it at all) */
+/* Hide the home button (I don't use it at all) */
 body:not([data-page="home"]) .r > div:nth-child(2) {
   display: none !important;
 }
 
-/* add gap before plugin icons + reorder */
+/* Add a gap before the plugin icons and reorder them */
 .ui-items-container[data-type="toolbar"] {
   margin-left: auto;
   order: 1;
@@ -125,30 +123,30 @@ iOS css: Move the toggle a bit from the edge of the screen and set it to always 
 - [Logseq Discord #ios-app](https://discord.com/channels/725182569297215569/924907384730689566/953857009311186964)
 
 ```css
-/*ios 展开交互开始*/
+/* iOS: expand and collapse controls (start) */
 
-/*控制位置*/
+/* Position the toggle */
 html.is-ios .block-control {
   position: absolute;
   right: 0px;
   margin-right: -14px;
 }
 
-/*控制大小*/
+/* Toggle size */
 html.is-ios .block-control svg {
   width: 24px !important;
   height: 24px !important;
 }
-/*控制旋转*/
+/* Rotate the arrow when collapsed */
 html.is-ios .block-control .collapsed svg[aria-hidden="true"] {
   transform: rotate(180deg);
 }
-/*控制打开时显示*/
+/* Show the toggle when expanded */
 html.is-ios div[haschild="true"] > div > div > .block-control .control-hide {
   display: block;
 }
 
-/*控制关闭时也显示*/
+/* Also show the toggle when collapsed */
 html.is-ios
   div[data-collapsed="false"]
   > div
@@ -162,11 +160,11 @@ html.is-ios .page-blocks-inner {
   padding-right: 4px;
 }
 
-/*控制闪卡中不显示*/
+/* Hide the toggle in flashcards */
 html.is-ios .cards-review .ls-card .block-control {
   display: none;
 }
-/*ios 展开交互结束*/
+/* iOS: expand and collapse controls (end) */
 ```
 
 ---
@@ -176,7 +174,7 @@ Dim installed plugins in Marketplace, make installable plugins easier to see (ma
 - [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/958162293366079509)
 
 ```css
-/* MARKETPLACE - hide installed =======================================*/
+/* Marketplace: hide installed plugins */
 .cp__plugins-marketplace .cp__plugins-item-card.market.installed {
   opacity: 0.4;
 }
@@ -201,7 +199,7 @@ Custom right sidebar layout
 - [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/961641146445078528)
 
 ```css
-/* right sidebar layout */
+/* Right sidebar layout */
 .cp__right-sidebar {
   font-family: "Roboto Slab";
   font-size: 14px;
@@ -246,9 +244,9 @@ Cool custom query dashboard.
 - Code:
 
 ```css
-/* Css Querys para que se puedan ver mejor */
+/* Query CSS for better readability */
 
-/* Tipp de comportamiento del texto en la tabla*/
+/* Tip: text behaviour inside the table */
 .whitespace-nowrap {
   white-space: initial;
   min-width: 170px;
@@ -261,13 +259,13 @@ table {
   margin-left: 0px;
 }
 
-/* Este es el conteneor completo de la tabla */
+/* The whole table container */
 .overflow-x-auto {
   min-width: 1100px;
   margin-left: -170px;
 }
 
-/* Este es la parte superior del titulo */
+/* The top of the title */
 th {
   font-size: 18px;
   font-weight: 500;
@@ -280,7 +278,7 @@ th .mr-1 {
   color: var(--ls-link-text-color-amarillo);
 }
 
-/** CSS de la comunidad que comprime la parte superior de opciones */
+/* Community CSS that compacts the options bar at the top */
 
 .custom-query-title {
   display: flex;
@@ -296,9 +294,9 @@ th .mr-1 {
   z-index: 1;
 }
 
-/**** STATUS CSS ****/
+/* Status CSS */
 
-/****** Para Leer **** ****/
+/* Status: to read */
 
 .page-reference[data-ref^="para leer"] .page-ref,
 .page-ref[data-ref^="para leer"] {
@@ -350,7 +348,7 @@ th .mr-1 {
   top: 3px;
 }
 
-/****** Leyendo **** ****/
+/* Status: reading */
 
 .page-reference[data-ref="leyendo"] .page-ref,
 .page-ref[data-ref="leyendo"] {
@@ -402,7 +400,7 @@ th .mr-1 {
   top: 3px;
 }
 
-/****** Estudiando **** ****/
+/* Status: studying */
 
 .page-reference[data-ref="estudiando"] .page-ref,
 .page-ref[data-ref="estudiando"] {
@@ -454,7 +452,7 @@ th .mr-1 {
   top: 3px;
 }
 
-/****** Analizado - Notas **** ****/
+/* Status: analysed, with notes */
 
 .page-reference[data-ref="analizado - notas"] .page-ref,
 .page-ref[data-ref="analizado - notas"] {
@@ -506,7 +504,7 @@ th .mr-1 {
   top: 3px;
 }
 
-/****** Terminado **** ****/
+/* Status: finished */
 
 .page-reference[data-ref="terminado"] .page-ref,
 .page-ref[data-ref="terminado"] {
@@ -558,7 +556,7 @@ th .mr-1 {
   top: 3px;
 }
 
-/****** Releer **** ****/
+/* Status: reread */
 
 .page-reference[data-ref="releer"] .page-ref,
 .page-ref[data-ref="releer"] {
@@ -690,7 +688,7 @@ To remove/hide/format "Table View", "Set properties", etc. in query results.
 - [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/964005052060672040)
 
 ```css
-/*Hide "Set properties"*/
+/* Hide "Set properties" */
 .text-sm.mr-1 {
   display: none;
 }
@@ -700,7 +698,7 @@ div.mx-2 {
   display: none;
 }
 
-/*Hide the table-view selector*/
+/* Hide the table-view selector */
 span.wrapper.transition-colors.ease-in-out {
   display: none;
 }
@@ -710,7 +708,7 @@ div.dsl-query > div.custom-query > div.flex > div.content {
   display: none;
 }
 
-/*Formatting results count*/
+/* Format the results count */
 span.opacity-60.text-sm.ml-2.results-count {
   font-size: 0.7rem;
   font-weight: 400;
@@ -753,7 +751,7 @@ Colored block via tags.
 - [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967293385062903859)
 
 ```css
-/** Tag note ***/
+/* Tag: note */
 
 div[data-refs-self*="1note"] {
   background-color: rgba(253, 245, 255, 1);
@@ -816,8 +814,7 @@ Good Images for questions and answers, and turn icons into base64.
 - [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967462539581603980)
 
 ```css
-/**** ======= **** Preguntas, Respuestas, notas, ideas, 
- * ideas ejecutadas y Claims **** ======= ****/
+/* Questions, answers, notes, ideas, executed ideas and claims */
 
 div[data-refs-self*="1pregunta"] {
   background-color: rgba(255, 245, 245, 1);
@@ -870,7 +867,7 @@ a.tag[data-ref="1pregunta"]:before {
   background-color: #fee2e2;
 }
 
-/* Dark theme para la linea izquierda de color rojo y un poco opaca*/
+/* Dark theme: translucent red left border */
 div[data-refs-self*="1pregunta"] .block-children-left-border {
   width: 3px;
   background-color: #ef4444;
@@ -884,18 +881,18 @@ div[data-refs-self*="1pregunta"] .block-children-left-border {
   opacity: 70%;
 }
 
-/* Dark theme para la linea izquierda Seleccion*/
+/* Dark theme: left border when selected */
 div[data-refs-self*="1pregunta"] .block-children-left-border:hover {
   background-color: var(--ls-link-text-color-amarillo);
 }
 
-/* Dark theme para el bullet de este bloque color rojo*/
+/* Dark theme: red bullet for this block */
 div[data-refs-self*="1pregunta"] .bullet-container .bullet {
   background-color: #ef4444 !important;
   opacity: 50%;
 }
 
-/** Tag de respuestas ***/
+/* Tag: answers */
 
 div[data-refs-self*="1respuesta"] {
   background-color: rgba(245, 255, 245, 1);
@@ -948,7 +945,7 @@ a.tag[data-ref="1respuesta"]:before {
   background-color: #c8f8df;
 }
 
-/* Dark theme para la linea izquierda 1respuesta*/
+/* Dark theme: left border for 1respuesta */
 div[data-refs-self*="1respuesta"] .block-children-left-border {
   width: 3px;
   background-color: #10b981;
@@ -962,12 +959,12 @@ div[data-refs-self*="1respuesta"] .block-children-left-border {
   opacity: 70%;
 }
 
-/* Dark theme para la linea izquierda Seleccion 1respuesta*/
+/* Dark theme: left border when 1respuesta is selected */
 div[data-refs-self*="1respuesta"] .block-children-left-border:hover {
   background-color: var(--ls-link-text-color-amarillo);
 }
 
-/* Dark theme para el bullet de este bloque 1respuesta*/
+/* Dark theme: bullet for 1respuesta blocks */
 div[data-refs-self*="1respuesta"] .bullet-container .bullet {
   background-color: #10b981 !important;
   opacity: 50%;

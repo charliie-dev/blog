@@ -137,8 +137,8 @@ does not start.
 
 ```sh
 sudo xbps-install -S fonts-droid-ttf wqy-microhei \
-  fcitx5 fcitx5-configtool fcitx5-chewing fcitx5-chewing-icons \
-  fcitx5-gtk fcitx5-gtk+2 fcitx5-gtk+3 fcitx5-gtk4 fcitx5-qt fcitx5-qt5 fcitx5-qt6
+    fcitx5 fcitx5-configtool fcitx5-chewing fcitx5-chewing-icons \
+    fcitx5-gtk fcitx5-gtk+2 fcitx5-gtk+3 fcitx5-gtk4 fcitx5-qt fcitx5-qt5 fcitx5-qt6
 ```
 
 Start it from `~/.xinitrc`. If the desktop or window manager does not start a D-Bus session
@@ -179,9 +179,9 @@ Build tools and development headers I end up needing on a fresh install:
 
 ```sh
 sudo xbps-install -S unzip wget git xz automake libtool autoconf cmake xtools man \
-  libmagick libmagick-devel libmagic file-devel openssl-devel fontconfig-devel freetype-devel \
-  harfbuzz harfbuzz-devel libevent-devel ncurses-devel libxcb-devel xclip \
-  python3-devel ruby-devel lua-devel sqlite sqlite-devel
+    libmagick libmagick-devel libmagic file-devel openssl-devel fontconfig-devel freetype-devel \
+    harfbuzz harfbuzz-devel libevent-devel ncurses-devel libxcb-devel xclip \
+    python3-devel ruby-devel lua-devel sqlite sqlite-devel
 ```
 
 [^acpi-mint]: [\[Solved\] ACPI errors during boot](https://forums.linuxmint.com/viewtopic.php?p=2211434)

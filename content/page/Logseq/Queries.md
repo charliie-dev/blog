@@ -84,8 +84,8 @@ Get all block's uuid
 {:title "tmp"
  :view (fn [result] (for [r result] [:pre (pr-str r)]))
  :query [:find (pull ?b [*])
-       :where
-       [?b :block/uuid _]]}
+         :where
+         [?b :block/uuid _]]}
 #+END_QUERY
 ```
 
@@ -97,16 +97,16 @@ Example correction `6. All pages have a "programming" tag` in [Logseq Docs: Adva
 #+BEGIN_QUERY
 {:title "All pages have a *programming* tag"
  :query [:find ?name
-       :in $ ?tag
-       :where
-       [?t :block/name ?tag]
-       [?p :page/tags ?t]
-       [?p :block/name ?name]]
+         :in $ ?tag
+         :where
+         [?t :block/name ?tag]
+         [?p :page/tags ?t]
+         [?p :block/name ?name]]
  :inputs ["programming"]
  :view (fn [result]
-       [:div.flex.flex-col
-        (for [page result]
-          [:a {:href (str "#/page/" page)} (clojure.string/capitalize page)])])}
+         [:div.flex.flex-col
+          (for [page result]
+            [:a {:href (str "#/page/" page)} (clojure.string/capitalize page)])])}
 #+END_QUERY
 ```
 
@@ -117,19 +117,18 @@ Query multiple tags
 ```clojure
 #+BEGIN_QUERY
 {:title [:h2 "Commitments"]
-:query [:find (pull ?b [*])
-       :in $ ?start ?today ?tag
-       :where
-       [?b :block/page ?p]
-       [?p :page/journal-day ?d]
-       [(>= ?d ?start)]
-       [(<= ?d ?today)]
-       [?b :block/ref-pages ?ref]
+ :query [:find (pull ?b [*])
+         :in $ ?start ?today ?tag
+         :where
+         [?b :block/page ?p]
+         [?p :page/journal-day ?d]
+         [(>= ?d ?start)]
+         [(<= ?d ?today)]
+         [?b :block/ref-pages ?ref]
 
-       (or [?ref :block/name ?tag]
-           [?ref :block/name "othertag"])
+         (or [?ref :block/name ?tag]
+             [?ref :block/name "othertag"])]
 
-       ]
  :inputs [:7d-before :today "TAG1"]}
 #+END_QUERY
 ```
@@ -163,29 +162,26 @@ Display today page through query dynamically based on today's date
 #+BEGIN_QUERY
 {:title "Scheduled items"
  :query [:find (pull ?b [*])
-        :in $ ?today
-       :where
+         :in $ ?today
+         :where
 
-            [?b :block/scheduled]
-            [(get-else $ ?b :block/priority "NIL") ?prio]
-            [(get-else $ ?b :block/marker "NIL") ?marker]
-            [(not= ?marker "DONE")]
-            [(not= ?marker "CANCELED")]
-               [(not= ?marker "LATER")]
+         [?b :block/scheduled]
+         [(get-else $ ?b :block/priority "NIL") ?prio]
+         [(get-else $ ?b :block/marker "NIL") ?marker]
+         [(not= ?marker "DONE")]
+         [(not= ?marker "CANCELED")]
+         [(not= ?marker "LATER")]
 
-               [(get-else $ ?b :block/scheduled ?today) ?d]
-            [(>= ?d ?today)]
+         [(get-else $ ?b :block/scheduled ?today) ?d]
+         [(>= ?d ?today)]]
 
-        ]
-        :inputs [:today]
-        :breadcrumb-show? false
-        :result-transform (fn [result]
-            (sort-by (fn [h]
-            (get h :block/priority "Z")
-            )
-             result))
-          :collapsed? false
-}
+ :inputs [:today]
+ :breadcrumb-show? false
+ :result-transform (fn [result]
+                     (sort-by (fn [h]
+                                (get h :block/priority "Z"))
+                              result))
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -199,11 +195,10 @@ Capture all the quotes
 #+BEGIN_QUERY
  {:title "QUOTE search"
   :query [:find (pull ?b [*])
-  :where
-   [?b :block/content ?c]
-   (or [(clojure.string/includes? ?c "#+BEGIN_QUOTE")]
-       [(clojure.string/starts-with? ?c "> ")]
-   )]}
+          :where
+          [?b :block/content ?c]
+          (or [(clojure.string/includes? ?c "#+BEGIN_QUOTE")]
+              [(clojure.string/starts-with? ?c "> ")])]}
 #+END_QUERY
 ```
 
@@ -215,14 +210,12 @@ Query for all the blocks which have a block property = current page, use the nam
 
 ```clojure
 #+BEGIN_QUERY
-{:query [
- :find (pull ?b [*])
- :in $ ?current-page
- :where
-  [?p :block/name ?current-page]
-  [?b :block/page ?p]
-  [?b :block/path-refs [:block/name "datalog"]]
-  ]
+{:query [:find (pull ?b [*])
+         :in $ ?current-page
+         :where
+         [?p :block/name ?current-page]
+         [?b :block/page ?p]
+         [?b :block/path-refs [:block/name "datalog"]]]
  :inputs [:current-page]}
 #+END_QUERY
 ```
@@ -232,20 +225,19 @@ Query for all the blocks which have a block property = current page, use the nam
 ```clojure
 #+BEGIN_QUERY
 {:query [:find (pull ?e [*])
-:in $ ?current-page
-:where
-[?b :block/marker ?marker]
-[(contains? #{"TODO" "LATER" "NOW" "DOING"} ?marker)]
-[?e :block/properties ?prop]
-[(get ?prop :projects) ?value]
-[(contains? ?value ?current-page)]
-]
-:inputs [:current-page]
-:result-transform (fn [result]
+         :in $ ?current-page
+         :where
+         [?b :block/marker ?marker]
+         [(contains? #{"TODO" "LATER" "NOW" "DOING"} ?marker)]
+         [?e :block/properties ?prop]
+         [(get ?prop :projects) ?value]
+         [(contains? ?value ?current-page)]]
+ :inputs [:current-page]
+ :result-transform (fn [result]
 
-  (sort-by (fn [h]
-      (get h :block/priority "Z")) result))
-:collapsed? false}
+                     (sort-by (fn [h]
+                                (get h :block/priority "Z")) result))
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -261,10 +253,9 @@ find block which are highlighted with ==
 #+BEGIN_QUERY
  {:title "Highlight search"
   :query [:find (pull ?b [*])
-  :where
-   [?b :block/content ?c]
-   [(clojure.string/includes? ?c "==")]
-   ]}
+          :where
+          [?b :block/content ?c]
+          [(clojure.string/includes? ?c "==")]]}
 #+END_QUERY
 ```
 
@@ -274,11 +265,10 @@ find block which are highlighted with ==
 #+BEGIN_QUERY
  {:title "Highlight search"
   :query [:find (pull ?b [*])
-  :where
-   [?b :block/content ?c]
-   [(re-pattern "==.*==") ?regex]
-   [(re-find ?regex ?c)]
-   ]}
+          :where
+          [?b :block/content ?c]
+          [(re-pattern "==.*==") ?regex]
+          [(re-find ?regex ?c)]]}
 #+END_QUERY
 ```
 
@@ -289,19 +279,16 @@ Show scheduled or deadline only on today's journal
 ```clojure
 #+BEGIN_QUERY
 {:title "SCHEDULED OR DEADLINE"
- :query [
-  :find (pull ?b [*])
-  :in $ ?current-page
-  :where
-  [?p :block/name ?current-page]
-  [?p :block/journal? true]
-  [?p :block/journal-day ?date]
-  (or
-   [?b :block/scheduled ?date]
-   [?b :block/deadline ?date]
-  )
-  (not [?b :block/marker])
- ]
+ :query [:find (pull ?b [*])
+         :in $ ?current-page
+         :where
+         [?p :block/name ?current-page]
+         [?p :block/journal? true]
+         [?p :block/journal-day ?date]
+         (or
+          [?b :block/scheduled ?date]
+          [?b :block/deadline ?date])
+         (not [?b :block/marker])]
  :inputs [:current-page]}
 #+END_QUERY
 ```
@@ -314,12 +301,12 @@ Query the block & page title of certain pages or tags
 #+BEGIN_QUERY
 {:title "Query for page references & tags."
  :query [:find (pull ?b [*])
-       :in $ ?page_name
-       :where
-       [?b :block/refs ?r]
-       [?r :block/name ?page_name]]
-       :inputs
-       ["mar 28, 2022"]}
+         :in $ ?page_name
+         :where
+         [?b :block/refs ?r]
+         [?r :block/name ?page_name]]
+ :inputs
+ ["mar 28, 2022"]}
 #+END_QUERY
 ```
 
@@ -346,13 +333,12 @@ Concatenate all the journal entries of the week in the Friday entry.
          [?b :block/page ?p]
          [?p :page/journal? true]
          [?p :page/journal-day ?d]
-         ;[?p :block/name ?current-page]
-         ;[?p :block/journal-day ?current-page-day]
+         ;; [?p :block/name ?current-page]
+         ;; [?p :block/journal-day ?current-page-day]
          [(>= ?d ?start)]
          (or
           [(<= ?d ?current-page)]
-          [(<= ?d ?today)])
-         ]
+          [(<= ?d ?today)])]
  :inputs [:current-page :7d-before :today]}
 #+END_QUERY
 ```
@@ -383,31 +369,25 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 
 ```clojure
 #+BEGIN_QUERY
-{
-    :title
-        [[:strong "🔥 Overdue"] [:span " or "] [:span.block-marker.NOW "NOW"] [:sup "(with-date)"]]
-    :query [
-        :find (pull ?block [*])
-        :in $ ?start ?next
-        :where
-            [?block :block/marker ?m]
-            (or-join [?block ?start ?next ?m]
-                (and
-                    (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
-                    [(> ?d ?start)]
-                    [(< ?d ?next)]
-                )
-                ;;
-                (and
-                    [(contains? #{"NOW"} ?m)]
-                    (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
-                )
-            )
-        ]
-        :inputs [:365d-before :today]
-        :breadcrumb-show? false
-        :collapsed? false
-}
+{:title
+ [[:strong "🔥 Overdue"] [:span " or "] [:span.block-marker.NOW "NOW"] [:sup "(with-date)"]]
+ :query [:find (pull ?block [*])
+         :in $ ?start ?next
+         :where
+         [?block :block/marker ?m]
+         (or-join [?block ?start ?next ?m]
+                  (and
+                   (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
+                   [(> ?d ?start)]
+                   [(< ?d ?next)])
+                  ;;
+                  (and
+                   [(contains? #{"NOW"} ?m)]
+                   (or [?block :block/scheduled ?d] [?block :block/deadline ?d])))]
+
+ :inputs [:365d-before :today]
+ :breadcrumb-show? false
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -417,32 +397,26 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 
 ```clojure
 #+BEGIN_QUERY
-{
-    :title
-        [[:strong "⏰ Today"] [:span " or "] [:span.block-marker.NOW "NOW"]]
-    :query [
-        :find (pull ?block [*])
-        :in $ ?day
-        :where
-            [?block :block/marker ?m]
-            (or-join [?block ?day ?m]
-                (and
-                    [(contains? #{"LATER"} ?m)]
-                    (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
-                    [(= ?d ?day)]
-                )
-                ;;
-                (and
-                    [(contains? #{"NOW"} ?m)]
-                    [(missing? $ ?block :block/scheduled)]
-                    [(missing? $ ?block :block/deadline)]
-                )
-            )
-    ]
-    :inputs [:today]
-    :breadcrumb-show? false
-    :collapsed? false
-}
+{:title
+ [[:strong "⏰ Today"] [:span " or "] [:span.block-marker.NOW "NOW"]]
+ :query [:find (pull ?block [*])
+         :in $ ?day
+         :where
+         [?block :block/marker ?m]
+         (or-join [?block ?day ?m]
+                  (and
+                   [(contains? #{"LATER"} ?m)]
+                   (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
+                   [(= ?d ?day)])
+                  ;;
+                  (and
+                   [(contains? #{"NOW"} ?m)]
+                   [(missing? $ ?block :block/scheduled)]
+                   [(missing? $ ?block :block/deadline)]))]
+
+ :inputs [:today]
+ :breadcrumb-show? false
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -451,22 +425,18 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 
 ```clojure
 #+BEGIN_QUERY
-{
-    :title
-        [:strong "🌞 Tomorrow"]
-    :query [
-        :find (pull ?block [*])
-        :in $ ?day
-        :where
-            [?block :block/marker ?m]
-            [(contains? #{"LATER"} ?m)]
-            (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
-            [(= ?d ?day)]
-    ]
-    :inputs [:1d-after]
-    :breadcrumb-show? false
-    :collapsed? false
-}
+{:title
+ [:strong "🌞 Tomorrow"]
+ :query [:find (pull ?block [*])
+         :in $ ?day
+         :where
+         [?block :block/marker ?m]
+         [(contains? #{"LATER"} ?m)]
+         (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
+         [(= ?d ?day)]]
+ :inputs [:1d-after]
+ :breadcrumb-show? false
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -476,32 +446,26 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 
 ```clojure
 #+BEGIN_QUERY
-{
-    :title
-        [[:strong "📅 This week"] [:span " or "] [:span.block-marker.LATER "LATER"] [:sup "(without-date)"]]
-    :query [
-        :find (pull ?block [*])
-        :in $ ?start ?next
-        :where
-            (or-join [?block ?start ?next]
-                (and
-                    (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
-                    [(> ?d ?start)]
-                    [(< ?d ?next)]
-                )
-                ;;
-                (and
-                    [?block :block/marker ?m]
-                    [(contains? #{"LATER"} ?m)]
-                    [(missing? $ ?block :block/scheduled)]
-                    [(missing? $ ?block :block/deadline)]
-                )
-            )
-    ]
-    :inputs [:1d-after :7d-after]
-    :breadcrumb-show? false
-    :collapsed? false
-}
+{:title
+ [[:strong "📅 This week"] [:span " or "] [:span.block-marker.LATER "LATER"] [:sup "(without-date)"]]
+ :query [:find (pull ?block [*])
+         :in $ ?start ?next
+         :where
+         (or-join [?block ?start ?next]
+                  (and
+                   (or [?block :block/scheduled ?d] [?block :block/deadline ?d])
+                   [(> ?d ?start)]
+                   [(< ?d ?next)])
+                  ;;
+                  (and
+                   [?block :block/marker ?m]
+                   [(contains? #{"LATER"} ?m)]
+                   [(missing? $ ?block :block/scheduled)]
+                   [(missing? $ ?block :block/deadline)]))]
+
+ :inputs [:1d-after :7d-after]
+ :breadcrumb-show? false
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -511,18 +475,14 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 ```clojure
 #+BEGIN_QUERY
 
-{
-    :title
-        [:strong "⏳ Waiting"]
-    :query [
-        :find (pull ?block [*])
-        :where
-            [?block :block/marker ?marker]
-            [(contains? #{"WAITING"} ?marker)]
-    ]
-    :breadcrumb-show? false
-    :collapsed? true
-}
+{:title
+ [:strong "⏳ Waiting"]
+ :query [:find (pull ?block [*])
+         :where
+         [?block :block/marker ?marker]
+         [(contains? #{"WAITING"} ?marker)]]
+ :breadcrumb-show? false
+ :collapsed? true}
 #+END_QUERY
 ```
 
@@ -546,12 +506,9 @@ page for pdf files has property `:file` and `:file-path`:
 
 ```clojure
 #+BEGIN_QUERY
-{
- :query [:find (pull ?p [*])
+{:query [:find (pull ?p [*])
          :where
-         [has-page-property ?p :file]
-       ]
-}
+         [has-page-property ?p :file]]}
 #+END_QUERY
 ```
 
@@ -589,14 +546,12 @@ Use query in a template.
 #+BEGIN_QUERY
  {:title [:b "<%current page%>"]
   :query [:find (pull ?b [*])
-  :in $ ?current-page
-  :where
-    [?b :block/path-refs ?name]
-    [?name :block/name ?current-page]
-    ]
+          :in $ ?current-page
+          :where
+          [?b :block/path-refs ?name]
+          [?name :block/name ?current-page]]
   :inputs [:current-page]
-  :breadcrumb-show? false
- }
+  :breadcrumb-show? false}
 #+END_QUERY
 ```
 
@@ -609,12 +564,12 @@ Query for **icon page property**.
 ```clojure
 #+BEGIN_QUERY
  {:title ""
- :query [:find (pull ?p [*])
- :where
-    [?p :block/properties ?prop]
-    [(get ?prop :icon) ?icon]
-     ; [(= "example" ?type)]`
-     ]}
+  :query [:find (pull ?p [*])
+          :where
+          [?p :block/properties ?prop]
+          [(get ?prop :icon) ?icon]
+          ;; [(= "example" ?type)]
+          ]}
 #+END_QUERY
 ```
 
@@ -627,15 +582,15 @@ Get scheduled tasks within a namespace.
 ```clojure
 #+BEGIN_QUERY
 {:title " Scheduled dates in Golf namespace"
-:query [:find (pull ?b [*])
-:where
-[?b :block/scheduled ?d]
-[?b :block/marker ?marker]
-[?b :block/page ?p]
-[?p :block/namespace ?ns]
-[?ns :block/name ?nsn]
-[(contains? #{"golf"} ?nsn)]]
-:collapsed? false}
+ :query [:find (pull ?b [*])
+         :where
+         [?b :block/scheduled ?d]
+         [?b :block/marker ?marker]
+         [?b :block/page ?p]
+         [?p :block/namespace ?ns]
+         [?ns :block/name ?nsn]
+         [(contains? #{"golf"} ?nsn)]]
+ :collapsed? false}
 #+END_QUERY
 ```
 
@@ -683,10 +638,8 @@ release_smushed:: 20220429
          (page-property ?p :status "towatch")
          [?p :block/properties ?props]
          [(get ?props :release-timestamp) ?d]
-         [(>  ?d ?today)]
-         ]
- :inputs [:right-now-ms]
-}
+         [(>  ?d ?today)]]
+ :inputs [:right-now-ms]}
 #+END_QUERY
 ```
 
@@ -702,10 +655,8 @@ release_smushed:: 20220429
          (page-property ?p :status "towatch")
          [?p :block/properties ?props]
          [(get ?props :release-smushed) ?d]
-         [(>  ?d ?today)]
-         ]
- :inputs [:today]
-}
+         [(>  ?d ?today)]]
+ :inputs [:today]}
 #+END_QUERY
 ```
 
@@ -748,14 +699,11 @@ Have a `property` field that I only fill with numbers (floats). Is it possible t
 
 ```clojure
 #+BEGIN_QUERY
-{
- :query [:find (pull ?b [*])
+{:query [:find (pull ?b [*])
          :where
          [?b :block/properties ?prop]
          [(get ?prop :num-prop) ?num]
-         [(> ?num 100)]
-       ]
-}
+         [(> ?num 100)]]}
 #+END_QUERY
 ```
 
@@ -763,24 +711,20 @@ Have a `property` field that I only fill with numbers (floats). Is it possible t
 
 ```clojure
          [(< ?num 50)]
-         [(> ?num 20)]
+[(> ?num 20)]
 ```
 
 - float function doesn't recognized, so multiply property by 1.0
 
 ```clojure
 #+BEGIN_QUERY
-{
-
- :query [:find (pull ?b [*])
+{:query [:find (pull ?b [*])
          :where
          [?b :block/properties ?prop]
          [(get ?prop :num-prop) ?num]
          [(* 1.0 ?num) ?numf]
          [(< ?numf 50)]
-         [(> ?numf 20)]
-       ]
-}
+         [(> ?numf 20)]]}
 #+END_QUERY
 ```
 
@@ -792,12 +736,9 @@ Query tasks which are recurring.
 
 ```clojure
 #+BEGIN_QUERY
-{
- :query [:find (pull ?b [*])
+{:query [:find (pull ?b [*])
          :where
-         [?b :block/repeated?]
-       ]
-}
+         [?b :block/repeated?]]}
 #+END_QUERY
 ```
 
@@ -809,13 +750,10 @@ Query to get second block.
 
 ```clojure
 #+BEGIN_QUERY
-{
- :query [:find (pull ?bl [*])
+{:query [:find (pull ?bl [*])
          :where
          [?b :block/pre-block?]
-         [?bl :block/left ?b]
-       ]
-}
+         [?bl :block/left ?b]]}
 #+END_QUERY
 ```
 
