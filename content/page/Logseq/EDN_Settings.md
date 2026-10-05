@@ -1,5 +1,6 @@
 ---
 title: Logseq | EDN_Settings
+description: "config.edn tweaks for Logseq: a custom progress-bar macro with its CSS, rendering != as ≠, and changing the foreground and background colours of highlighted text. Each snippet links back to the Discord or Twitter thread it came from."
 tags:
   - logseq
 date: 2022-04-08

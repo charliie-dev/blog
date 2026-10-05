@@ -1,5 +1,6 @@
 ---
 title: Logseq | Tips
+description: "Assorted Logseq tips: the task-state diagram, a vault survival kit, saving a Safari selection as a quote with an iOS shortcut and running Logseq in Docker. Also how to pronounce Logseq, the URL protocol, embedding Jupyter through JupyterLite, writing a literal dollar sign in LaTeX and adding an audio player with image syntax."
 tags:
   - logseq
 date: 2022-04-08
@@ -46,7 +47,7 @@ Use Logseq with [[Software/Virtualization/Docker/container]]
 
 - [Discord Link](https://discord.com/channels/725182569297215569/725182570131751005/956622800716705832)
 
-- https://github.com/logseq/logseq/blob/master/docs/docker-web-app-guide.md
+- [logseq/logseq: docs/docker-web-app-guide.md](https://github.com/logseq/logseq/blob/master/docs/docker-web-app-guide.md)
 
 ---
 
@@ -56,17 +57,17 @@ You can write equations in Markdown even if your md editor doesn't support Latex
 
 ![pi](<http://latex.codecogs.com/png.latex?\frac{1}{\pi}=\frac{2\sqrt{2}}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103%2B26390k)}{(k!)^4396^{4k}}>)
 
-- ref: https://editor.codecogs.com/docs
+- ref: [CodeCogs Equation Editor: Quickstart](https://editor.codecogs.com/docs)
 
 ---
 
 imo the best iteration on the logo is still
-https://www.figma.com/community/file/933752127976667301
+[Logseq Logo design](https://www.figma.com/community/file/933752127976667301)
 it's minimalistic so it scales well, it works in color and b&w, it works great as a static logo and animated logo, the dots are reminiscent of nodes, the shape is the L of logseq, the moving dots hint at the connection between nodes and the ever-evolving nature of a graph, and it still inherits traits from the previous logos, while setting a different mood from competitors (roam, obsidian, craft, clover, …)
 
 - [Discord Link](https://discord.com/channels/725182569297215569/775936939638652948/934860582799147009)
 
-- https://www.figma.com/community/file/933752127976667301
+- [Logseq Logo design](https://www.figma.com/community/file/933752127976667301)
 
 - imo, the creator really did a great job on this (open the figma to see preliminary steps). The only thing that may be missing is the 'playful' or 'joyful' / kids-friendly aspect that seemed important for @tienson but that could be addressed with hints of color (on one or multiple dots)
 

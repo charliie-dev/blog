@@ -1,5 +1,6 @@
 ---
 title: Logseq | CSS_Theme
+description: "A collection of custom.css snippets for styling Logseq: a progress bar, task colours by state, more compact query results, highlighting the block being edited, a custom right sidebar and a query dashboard. It also includes a movable search box, ruby annotations through the logseq-wrap plugin and colouring blocks by tag. Most snippets come from the Logseq Discord and community themes, each linked to its source."
 tags:
   - logseq
 date: 2022-04-08

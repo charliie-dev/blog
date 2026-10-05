@@ -1,5 +1,6 @@
 ---
 title: Logseq | Queries
+description: "Notes on Logseq advanced queries, from the background (Datalog, Datascript, Datomic, Logseq's database schema and Hiccup) to working examples: querying multiple tags, sorting by a block property, capturing quotes, scheduled and deadline tasks on today's journal, the current date, orphaned pages, queries inside templates, recurring tasks and more. Collected and tested from the Logseq Discord."
 tags:
   - logseq
 date: 2022-04-08
@@ -15,49 +16,49 @@ from @Jeddychan in Logseq's discord #.v-border-children
   Hiccup ------- a language used to generate HTML, you can use it in an advanced query's custom view ( :view )
 
 - Official Docs -  
-  https://logseq.github.io/#/page/queries
-  https://logseq.github.io/#/page/advanced%20queries
-  https://logseq.github.io/#/page/hiccup
+  [Logseq Docs: Queries](https://logseq.github.io/#/page/queries)
+  [Logseq Docs: Advanced Queries](https://logseq.github.io/#/page/advanced%20queries)
+  [Logseq Docs: Hiccup](https://logseq.github.io/#/page/hiccup)
 
 - Datalog -  
-  http://www.learndatalogtoday.org/
-  http://www.learndatalogtoday.org/chapter/0
+  [Learn Datalog Today!](http://www.learndatalogtoday.org/)
+  [Learn Datalog Today! - Extensible Data Notation](http://www.learndatalogtoday.org/chapter/0)
   When reading through this, I realized that viewing some of the query keywords as relationships between objects, made everything make a lot more sense/intuitive
 
 - Datascript -  
-  https://github.com/tonsky/datascript/wiki/Getting-started
-  https://github.com/tonsky/datascript#resources
+  [DataScript Wiki: Getting started](https://github.com/tonsky/datascript/wiki/Getting-started)
+  [tonsky/datascript - Resources](https://github.com/tonsky/datascript#resources)
 
 - Datomic -  
-  https://docs.datomic.com/on-prem/query/query.html#syntax-used-in-grammar
+  [Query Reference - Syntax Used In Grammar](https://docs.datomic.com/on-prem/query/query.html#syntax-used-in-grammar)
   Only some info here may be applicable, but I found the syntax section to be helpful in understanding the meaning of all the brackets used in queries (like: [ ], { }, ( ), etc.)
 
 - Logseq's Database Schema -  
-  https://github.com/logseq/logseq/blob/master/src/main/frontend/db_schema.cljs
+  [logseq/logseq: src/main/frontend/db_schema.cljs](https://github.com/logseq/logseq/blob/master/src/main/frontend/db_schema.cljs)
   Here you can see how the database is structured and all the keywords (you may recognize some keywords from example queries)
 
 - Hiccup Syntax -  
-  https://github.com/weavejester/hiccup/wiki/Syntax
+  [Hiccup Wiki: Syntax](https://github.com/weavejester/hiccup/wiki/Syntax)
 
 - Unofficial Docs -  
-  https://mschmidtkorth.github.io/logseq-msk-docs/#/page/queries
+  [Logseq MSK Docs: Queries](https://mschmidtkorth.github.io/logseq-msk-docs/#/page/queries)
 
 from @Bad3r in Logseq's discord #.v-border-children
 
 - Datalog is what's called a rule based query language. It's been around since the 80s
   Some resources for learning Datalog.
 
-- http://www.learndatalogtoday.org/
+- [Learn Datalog Today!](http://www.learndatalogtoday.org/)
 
-- https://nextjournal.com/try/learn-crux-datalog-today/learn-crux-datalog-today
+- [Learn Crux Datalog Today](https://nextjournal.com/try/learn-crux-datalog-today/learn-crux-datalog-today)
 
-- https://docs.datomic.com/query.html
+- [Datomic Query](https://docs.datomic.com/query.html)
 
 Logseq queries
 
-- https://mschmidtkorth.github.io/logseq-msk-docs/#/page/Queries%2FAdvanced%20Queries%2FTutorial
+- [Logseq MSK Docs: Queries/Advanced Queries/Tutorial](https://mschmidtkorth.github.io/logseq-msk-docs/#/page/Queries%2FAdvanced%20Queries%2FTutorial)
 
-- https://docs.logseq.com/#/page/advanced%20queries
+- [Logseq Docs: Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries)
 
 from @Avijeet in Logseq's discord #.v-border-children
 
@@ -67,14 +68,14 @@ from @Avijeet in Logseq's discord #.v-border-children
 
 from @cldwalker in Logseq's discord #.v-border-children
 
-- There is a handy new query feature in the nightly build - the ability to use any of these simple query rules, https://github.com/logseq/logseq/blob/2e340ca1c6d73731275d526c09e94d8d9e44214e/src/main/frontend/db/rules.cljc#L61-L141,
+- There is a handy new query feature in the nightly build - the ability to use any of these simple query rules, [logseq/logseq: rules.cljc (L61–L141)](https://github.com/logseq/logseq/blob/2e340ca1c6d73731275d526c09e94d8d9e44214e/src/main/frontend/db/rules.cljc#L61-L141),
 
-- in an advanced query. Here is an example query - https://github.com/logseq/logseq/blob/ed6a02c6921f6605d6c2482ca013f81de9c16b01/src/test/frontend/db/query_custom_test.cljs#L26-L29 .
+- in an advanced query. Here is an example query - [logseq/logseq: query_custom_test.cljs (L26–L29)](https://github.com/logseq/logseq/blob/ed6a02c6921f6605d6c2482ca013f81de9c16b01/src/test/frontend/db/query_custom_test.cljs#L26-L29) .
 
-- While the rules have the same names as the operators in simple queries, their arguments can be different. Examples of their arguments are at https://gist.github.com/logseq-cldwalker/796202d55897fd34ea3d8c3bb3401ae0
+- While the rules have the same names as the operators in simple queries, their arguments can be different. Examples of their arguments are at [Examples of rules that can be used from advanced query](https://gist.github.com/logseq-cldwalker/796202d55897fd34ea3d8c3bb3401ae0)
 
 - `:keys` logic for query:
-  https://github.com/tonsky/datascript/blob/master/docs/queries.md#return-maps
+  [DataScript queries - Return maps](https://github.com/tonsky/datascript/blob/master/docs/queries.md#return-maps)
 
 Get all block's uuid
 

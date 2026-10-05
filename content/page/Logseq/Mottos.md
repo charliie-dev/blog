@@ -1,5 +1,6 @@
 ---
 title: Logseq | Mottos
+description: "A few mottos about reading and tools that I keep in Logseq. The core one: before worrying about information overload, decide what your reading goal is and what you want it to make happen."
 tags:
   - logseq
 date: 2022-04-08

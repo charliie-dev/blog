@@ -1,5 +1,6 @@
 ---
 title: Void-Linux | Personal Pitfalls
+description: "Notes from running Void Linux day to day: fixing the ACPI BIOS error at boot, saving GRUB options, an Acer Aspire 4830 touchpad that would not work and a Go install error. It also covers graphics drivers, xbps package tips, setting up Fcitx5 for Chinese input, switching DNS to Cloudflare, calibrating the system clock and choosing a display or login manager."
 tags:
   - void
   - devlog
@@ -14,21 +15,21 @@ cover:
 
 ## ACPI BIOS Error on startup
 
-<https://forums.linuxmint.com/viewtopic.php?p=2211434>
+[\[Solved\] ACPI errors during boot](https://forums.linuxmint.com/viewtopic.php?p=2211434)
 
-<https://www.reddit.com/r/voidlinux/comments/v7qquj/acpi_bios_error_on_startup/>
+[ACPI BIOS Error on startup](https://www.reddit.com/r/voidlinux/comments/v7qquj/acpi_bios_error_on_startup/)
 
 ## Save grub option
 
-<https://askubuntu.com/a/1000735>
+[Set "older" kernel as default grub entry](https://askubuntu.com/a/1000735)
 
 ## Grub doc
 
-<https://hugh712.gitbooks.io/grub/content/configuration-parameters.html#GRUB_DISABLE_OS_PROBER>
+[Configuration parameters - GRUB_DISABLE_OS_PROBER](https://hugh712.gitbooks.io/grub/content/configuration-parameters.html#GRUB_DISABLE_OS_PROBER)
 
 ## Acer Aspire 4830 series touchpad not working?
 
-<https://unix.stackexchange.com/questions/28736/what-does-the-i8042-nomux-1-kernel-option-do-during-booting-of-ubuntu>
+[What does the 'i8042.nomux=1' kernel option do during booting of Ubuntu?](https://unix.stackexchange.com/questions/28736/what-does-the-i8042-nomux-1-kernel-option-do-during-booting-of-ubuntu)
 
 ## golang install error
 
@@ -50,7 +51,7 @@ pkg: `linux-firmware`
 
 `Xlib:  extension "GLX" missing on display ":0".`
 
-<https://github.com/servo/servo/issues/22908#issuecomment-465462090>
+[Xlib: extension "GLX" missing on display ":1" - comment](https://github.com/servo/servo/issues/22908#issuecomment-465462090)
 
 switch to **nouveau** fix the problem
 
@@ -99,17 +100,17 @@ System will regenerate `/etc/resolv.conf` after reboot. So we need to prevent it
 
 `chattr +i /etc/resolv.conf`
 
-<https://www.cyberciti.biz/faq/dhclient-etcresolvconf-hooks/>
+[Linux Make Sure /etc/resolv.conf Never Get Updated By DHCP Client](https://www.cyberciti.biz/faq/dhclient-etcresolvconf-hooks/)
 
 ---
 
 # Calibrate system clock
 
-<https://docs.voidlinux.org/config/date-time.html>
+[Date and Time](https://docs.voidlinux.org/config/date-time.html)
 
 pkg: ntp
 
-<https://www.reddit.com/r/voidlinux/comments/km33pr/comment/ghcjf4l/?context=3>
+[Problems with time... again - comment](https://www.reddit.com/r/voidlinux/comments/km33pr/comment/ghcjf4l/?context=3)
 
 `sudo hwclock --systohc --localtime`
 
