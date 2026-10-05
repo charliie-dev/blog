@@ -407,3 +407,15 @@ main h1 {
   background-color: var(--ctp-mantle);
   border-color: var(--ctp-surface0);
 }
+
+/* Hextra's blog list hard-codes "Read more" as hsl(var(--primary-hue), 100%, 50%), which falls back
+   to its default blue once the hue is no longer overridden; draw it in the palette's link blue. */
+main a[aria-label][class*="primary-hue"] {
+  color: var(--ctp-blue);
+}
+
+/* The TOC footer ("Scroll to top") fades the list above it with a shadow Hextra hard-codes as white
+   and #111; tie it to the page background so it blends into Latte and Mocha instead of darkening. */
+.hextra-toc [class*="shadow-[0_-12px_16px"] {
+  box-shadow: 0 -12px 16px var(--ctp-base) !important;
+}
