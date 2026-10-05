@@ -24,6 +24,13 @@ markup:
   goldmark:
     renderer:
       unsafe: true # Logseq exports carry raw HTML
+    extensions:
+      # Math for KaTeX. Inline math uses \( \) only, so dollar signs in prose stay literal.
+      passthrough:
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
   highlight:
     noClasses: false
     codeFences: true
