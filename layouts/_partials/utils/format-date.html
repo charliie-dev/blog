@@ -1,0 +1,4 @@
+{{- /* Hextra's date partial, wrapped in <time> so dates can be styled (assets/css/custom.css). */ -}}
+{{- with . -}}
+  <time class="ctp-date" datetime="{{ .Format "2006-01-02" }}">{{ . | time.Format (site.Params.dateFormat | default ":date_long") }}</time>
+{{- end -}}

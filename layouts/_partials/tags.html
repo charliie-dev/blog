@@ -1,0 +1,12 @@
+{{- /*
+  Hextra's tag list, with each tag drawn in one Catppuccin accent picked from a hash of its name
+  (like the per-category colours on catppuccin.com/blog), so a tag keeps its colour everywhere.
+*/ -}}
+{{- $context := .context -}}
+{{- $accents := slice "rosewater" "flamingo" "pink" "mauve" "red" "maroon" "peach" "yellow" "green" "teal" "sky" "sapphire" "blue" "lavender" -}}
+{{- range $tag := $context.Params.tags -}}
+  {{- with $context.Site.GetPage (printf "/tags/%s" $tag) -}}
+    {{- $accent := index $accents (mod (hash.FNV32a $tag) (len $accents)) -}}
+    <a class="ctp-tag hx:inline-block hx:whitespace-nowrap hx:mr-2" style="--tag-color: var(--ctp-{{ $accent }})" href="{{ .RelPermalink }}">#{{ $tag }}</a>
+  {{- end -}}
+{{- end -}}

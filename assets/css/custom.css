@@ -1,5 +1,289 @@
-/* Home page: avatar/intro on the left, Explore cards on the right (stacked on small screens). */
-/* hextra-home wraps .Content in a flex column with items-start, which shrinks children to their
+/* ── Catppuccin palette ─────────────────────────────────────────────────────
+   https://github.com/catppuccin/catppuccin — Latte for light, Mocha for dark, Green as accent.
+   --ctp-* holds the active flavour; everything below reads only those variables, so the light
+   and dark themes share one set of rules. */
+:root {
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext1: #5c5f77;
+  --ctp-subtext0: #6c6f85;
+  --ctp-overlay2: #7c7f93;
+  --ctp-overlay1: #8c8fa1;
+  --ctp-overlay0: #9ca0b0;
+  --ctp-surface2: #acb0be;
+  --ctp-surface1: #bcc0cc;
+  --ctp-surface0: #ccd0da;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+}
+
+.dark {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+}
+
+/* Hextra's utilities read Tailwind colour tokens (--hx-color-*): light mode draws with the gray
+   scale on white and black, dark mode mostly with the neutral scale on "dark". Remapping those
+   tokens recolours the theme without touching its templates. */
+:root {
+  --hx-color-white: var(--ctp-base);
+  --hx-color-black: var(--ctp-text);
+  --hx-color-gray-50: var(--ctp-mantle);
+  --hx-color-gray-100: var(--ctp-crust);
+  --hx-color-gray-200: var(--ctp-surface0);
+  --hx-color-gray-300: var(--ctp-surface1);
+  --hx-color-gray-400: var(--ctp-overlay1);
+  --hx-color-gray-500: var(--ctp-subtext0);
+  --hx-color-gray-600: var(--ctp-subtext1);
+  --hx-color-gray-700: var(--ctp-text);
+  --hx-color-gray-800: var(--ctp-text);
+  --hx-color-gray-900: var(--ctp-text);
+  --hx-color-slate-50: var(--ctp-mantle);
+  --hx-color-slate-100: var(--ctp-crust);
+  --hx-color-slate-900: var(--ctp-text);
+  /* Primary = Catppuccin green. Hextra derives every primary-N shade from one HSL value, which
+     yields greens that are not in the palette; pin each step to green tinted towards base (light
+     steps) or towards text (dark steps) instead. */
+  --hx-color-primary-50: color-mix(in srgb, var(--ctp-green) 8%, var(--ctp-base));
+  --hx-color-primary-100: color-mix(in srgb, var(--ctp-green) 15%, var(--ctp-base));
+  --hx-color-primary-200: color-mix(in srgb, var(--ctp-green) 30%, var(--ctp-base));
+  --hx-color-primary-300: color-mix(in srgb, var(--ctp-green) 50%, var(--ctp-base));
+  --hx-color-primary-400: color-mix(in srgb, var(--ctp-green) 75%, var(--ctp-base));
+  --hx-color-primary-500: var(--ctp-green);
+  --hx-color-primary-600: var(--ctp-green);
+  --hx-color-primary-700: color-mix(in srgb, var(--ctp-green) 85%, var(--ctp-text));
+  --hx-color-primary-800: color-mix(in srgb, var(--ctp-green) 70%, var(--ctp-text));
+  --hx-color-primary-900: color-mix(in srgb, var(--ctp-green) 55%, var(--ctp-text));
+}
+
+.dark {
+  --hx-color-dark: var(--ctp-base);
+  --hx-color-white: var(--ctp-text);
+  --hx-color-black: var(--ctp-crust);
+  --hx-color-neutral-50: var(--ctp-text);
+  --hx-color-neutral-100: var(--ctp-text);
+  --hx-color-neutral-200: var(--ctp-subtext1);
+  --hx-color-neutral-300: var(--ctp-subtext1);
+  --hx-color-neutral-400: var(--ctp-subtext0);
+  --hx-color-neutral-500: var(--ctp-overlay1);
+  --hx-color-neutral-600: var(--ctp-overlay0);
+  --hx-color-neutral-700: var(--ctp-surface1);
+  --hx-color-neutral-800: var(--ctp-surface0);
+  --hx-color-neutral-900: var(--ctp-mantle);
+  --hx-color-neutral-950: var(--ctp-crust);
+  --hx-color-gray-50: var(--ctp-text);
+  --hx-color-gray-100: var(--ctp-text);
+  --hx-color-gray-200: var(--ctp-subtext1);
+  --hx-color-gray-300: var(--ctp-subtext0);
+  --hx-color-gray-400: var(--ctp-overlay2);
+  --hx-color-gray-500: var(--ctp-overlay1);
+  --hx-color-gray-600: var(--ctp-surface2);
+  --hx-color-gray-700: var(--ctp-surface1);
+  --hx-color-gray-800: var(--ctp-surface0);
+  --hx-color-gray-900: var(--ctp-mantle);
+  --hx-color-slate-100: var(--ctp-text);
+  /* Dark mode reads primary-400/600 as text and primary-100…400 at low opacity as backgrounds,
+     so the light steps stay green and the dark steps sink towards base. */
+  --hx-color-primary-50: var(--ctp-green);
+  --hx-color-primary-100: var(--ctp-green);
+  --hx-color-primary-200: var(--ctp-green);
+  --hx-color-primary-300: var(--ctp-green);
+  --hx-color-primary-400: var(--ctp-green);
+  --hx-color-primary-500: var(--ctp-green);
+  --hx-color-primary-600: var(--ctp-green);
+  --hx-color-primary-700: color-mix(in srgb, var(--ctp-green) 80%, var(--ctp-base));
+  --hx-color-primary-800: color-mix(in srgb, var(--ctp-green) 60%, var(--ctp-base));
+  --hx-color-primary-900: color-mix(in srgb, var(--ctp-green) 40%, var(--ctp-base));
+}
+
+/* ── Base: text, links, selection (after catppuccin.com) ────────────────────
+   The official site reads body copy in subtext1, headings in text, links in blue, and selects
+   with blue (Latte) or mauve (Mocha) at 30%. Hextra leaves light-mode text to the browser default,
+   so body colour is pinned here for both flavours. Green stays the UI accent (active and focused
+   navigation, primary buttons). */
+body {
+  color: var(--ctp-subtext1);
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6,
+main h1 {
+  color: var(--ctp-text);
+}
+
+.content a:not(.hextra-card):not(.ctp-tag) {
+  color: var(--ctp-blue);
+  text-decoration: none;
+}
+
+.content a:not(.hextra-card):not(.ctp-tag):hover {
+  text-decoration: underline;
+}
+
+:root { --ctp-selection: var(--ctp-blue); }
+.dark { --ctp-selection: var(--ctp-mauve); }
+
+::selection {
+  background-color: color-mix(in srgb, var(--ctp-selection) 30%, transparent);
+}
+
+/* Dates and other metadata sit in overlay1, as on the official post pages; the date partial is
+   overridden to wrap them in <time class="ctp-date">. */
+.ctp-date {
+  color: var(--ctp-overlay1);
+}
+
+/* Tags: each tag carries its own accent (layouts/_partials/tags.html picks it from the name). */
+.ctp-tag {
+  color: var(--tag-color);
+  transition: opacity 150ms;
+}
+
+.ctp-tag:hover {
+  opacity: 0.75;
+}
+
+/* Inline code: text on surface0 instead of Hextra's primary-tinted box. */
+.content :not(pre) > code {
+  background-color: var(--ctp-surface0);
+  border-color: var(--ctp-surface1);
+  color: var(--ctp-text);
+}
+
+/* ── Accent bar ─────────────────────────────────────────────────────────────
+   The slowly scrolling rainbow strip across the top of catppuccin.com, drawn on the sticky
+   navbar so it stays in view. */
+@keyframes ctp-accent-bar {
+  100% { background-position: right; }
+}
+
+.hextra-nav-container::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  z-index: 1;
+  background-image: linear-gradient(90deg,
+    var(--ctp-rosewater), var(--ctp-flamingo), var(--ctp-pink), var(--ctp-mauve),
+    var(--ctp-red), var(--ctp-maroon), var(--ctp-peach), var(--ctp-yellow),
+    var(--ctp-green), var(--ctp-teal), var(--ctp-sky), var(--ctp-sapphire),
+    var(--ctp-blue), var(--ctp-lavender), var(--ctp-rosewater));
+  background-size: 400% 100%;
+  background-position: left;
+  animation: ctp-accent-bar 20s linear infinite forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hextra-nav-container::before {
+    background-size: 100% 100%;
+    animation: none;
+  }
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────────────
+   Text links in text colour with a short accent underline that slides in on hover, each section
+   in its own accent (default mauve), as on the official navigation. */
+.hextra-nav-container nav a:not(:has(svg)) {
+  --nav-accent: var(--ctp-mauve);
+  position: relative;
+  color: var(--ctp-text);
+}
+
+.hextra-nav-container nav a[href="/page"] { --nav-accent: var(--ctp-blue); }
+.hextra-nav-container nav a[href="/dj"] { --nav-accent: var(--ctp-mauve); }
+.hextra-nav-container nav a[href="/foodie"] { --nav-accent: var(--ctp-peach); }
+.hextra-nav-container nav a[href="/tags"] { --nav-accent: var(--ctp-green); }
+
+.hextra-nav-container nav a:not(:has(svg))::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 20px;
+  height: 3px;
+  background: var(--nav-accent);
+  transform: scaleX(0);
+  transform-origin: top right;
+  transition: transform 200ms ease-in-out 200ms;
+}
+
+.hextra-nav-container nav a:not(:has(svg)):hover::after {
+  transform: scaleX(1);
+  transform-origin: top left;
+  transition-delay: 10ms;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────────
+   Cards sit on mantle with no visible border and grow slightly on hover, like the official article
+   cards; each Explore card's icon takes the same accent as its navbar link. */
+.hextra-card {
+  background-color: var(--ctp-mantle) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transition: transform 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+.hextra-card:hover {
+  transform: scale(1.02);
+  background-color: var(--ctp-surface0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hextra-card:hover { transform: none; }
+}
+
+.hextra-card span { color: var(--ctp-text); }
+.hextra-card[href="page/"] svg { color: var(--ctp-blue); }
+.hextra-card[href="dj/"] svg { color: var(--ctp-mauve); }
+.hextra-card[href="foodie/"] svg { color: var(--ctp-peach); }
+.hextra-card[href="tags/"] svg { color: var(--ctp-green); }
+
+/* ── Footer ─────────────────────────────────────────────────────────────────
+   Mantle band with subtext0 text, as on the official site. */
+.hextra-footer {
+  background-color: var(--ctp-mantle) !important;
+  color: var(--ctp-subtext0);
+}
+
+/* ── Home page ──────────────────────────────────────────────────────────────
+   hextra-home wraps .Content in a flex column with items-start, which shrinks children to their
    content width; stretch this block to the full row and centre it. The right column needs at
    least ~520px for the cards grid to show two columns (Hextra's cards use a 250px minimum). */
 .home-split {
@@ -33,11 +317,11 @@
   padding-left: 1.25rem;
   font-size: 1.25rem;
   line-height: 1.9;
-  color: rgb(75 85 99); /* gray-600 */
+  color: var(--hx-color-gray-600);
 }
 
 .dark .home-tagline {
-  color: rgb(163 163 163); /* neutral-400 */
+  color: var(--hx-color-neutral-400);
 }
 
 .home-explore-title {
@@ -45,11 +329,11 @@
   font-weight: 700;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid rgb(229 231 235); /* gray-200 */
+  border-bottom: 1px solid var(--hx-color-gray-200);
 }
 
 .dark .home-explore-title {
-  border-bottom-color: rgb(38 38 38); /* neutral-800 */
+  border-bottom-color: var(--hx-color-neutral-800);
 }
 
 .home-section-gap {
@@ -61,11 +345,11 @@
   flex-wrap: wrap;
   gap: 1.75rem;
   padding: 0.25rem 0.25rem 0;
-  color: rgb(75 85 99); /* gray-600 */
+  color: var(--hx-color-gray-600);
 }
 
 .dark .home-contacts {
-  color: rgb(212 212 212); /* neutral-300 */
+  color: var(--hx-color-neutral-300);
 }
 
 .home-contacts a {
@@ -74,10 +358,52 @@
 }
 
 .home-contacts a:hover {
-  color: rgb(17 24 39); /* gray-900 */
+  color: var(--hx-color-primary-600);
   transform: translateY(-1px);
 }
 
 .dark .home-contacts a:hover {
-  color: #fff;
+  color: var(--hx-color-primary-400);
+}
+
+
+/* ── Code highlighting ──────────────────────────────────────────────────────
+   Token colours follow catppuccin/codemirror (https://github.com/catppuccin/codemirror):
+   keywords mauve, functions/properties blue, types/classes yellow, constants/numbers peach,
+   self red, operators sky, escapes/regex pink, strings green, comments/punctuation overlay2.
+   Blocks sit on mantle (codemirror's panel colour) so they stand apart from the base page.
+   Hextra scopes its own github/github-dark rules as `.highlight .chroma .x` and
+   `.dark .highlight .chroma .x`; the `:root .highlight` prefix matches that specificity and wins
+   because this file loads after the theme CSS. */
+:root .highlight .chroma { color: var(--ctp-text); background-color: var(--ctp-mantle); }
+:root .highlight .chroma .lnt, :root .highlight .chroma .ln { color: var(--ctp-overlay1); }
+:root .highlight .chroma .hl { background-color: var(--ctp-surface0); }
+:root .highlight .chroma .k, :root .highlight .chroma .kd, :root .highlight .chroma .kn, :root .highlight .chroma .kp, :root .highlight .chroma .kr { color: var(--ctp-mauve); }
+:root .highlight .chroma .kt { color: var(--ctp-yellow); }
+:root .highlight .chroma .kc { color: var(--ctp-peach); }
+:root .highlight .chroma .n, :root .highlight .chroma .nx, :root .highlight .chroma .nv { color: var(--ctp-text); }
+:root .highlight .chroma .nf, :root .highlight .chroma .fm, :root .highlight .chroma .na, :root .highlight .chroma .py, :root .highlight .chroma .nl, :root .highlight .chroma .nt { color: var(--ctp-blue); }
+:root .highlight .chroma .nc, :root .highlight .chroma .nn, :root .highlight .chroma .nd, :root .highlight .chroma .ne { color: var(--ctp-yellow); }
+:root .highlight .chroma .nb, :root .highlight .chroma .no { color: var(--ctp-peach); }
+:root .highlight .chroma .bp { color: var(--ctp-red); }
+:root .highlight .chroma .vc, :root .highlight .chroma .vg, :root .highlight .chroma .vi, :root .highlight .chroma .vm { color: var(--ctp-lavender); }
+:root .highlight .chroma .s, :root .highlight .chroma .sa, :root .highlight .chroma .sb, :root .highlight .chroma .sc, :root .highlight .chroma .dl, :root .highlight .chroma .sd, :root .highlight .chroma .s2, :root .highlight .chroma .sh, :root .highlight .chroma .si, :root .highlight .chroma .sx, :root .highlight .chroma .s1, :root .highlight .chroma .ss { color: var(--ctp-green); }
+:root .highlight .chroma .se, :root .highlight .chroma .sr { color: var(--ctp-pink); }
+:root .highlight .chroma .m, :root .highlight .chroma .mb, :root .highlight .chroma .mf, :root .highlight .chroma .mh, :root .highlight .chroma .mi, :root .highlight .chroma .il, :root .highlight .chroma .mo { color: var(--ctp-peach); }
+:root .highlight .chroma .o, :root .highlight .chroma .ow { color: var(--ctp-sky); }
+:root .highlight .chroma .p { color: var(--ctp-overlay2); }
+:root .highlight .chroma .c, :root .highlight .chroma .ch, :root .highlight .chroma .cm, :root .highlight .chroma .c1, :root .highlight .chroma .cs { color: var(--ctp-overlay2); }
+:root .highlight .chroma .cp, :root .highlight .chroma .cpf { color: var(--ctp-green); }
+:root .highlight .chroma .gi { color: var(--ctp-green); }
+:root .highlight .chroma .gd { color: var(--ctp-red); }
+:root .highlight .chroma .gh, :root .highlight .chroma .gu { color: var(--ctp-blue); font-weight: bold; }
+:root .highlight .chroma .ge { font-style: italic; }
+:root .highlight .chroma .gs { font-weight: bold; }
+:root .highlight .chroma .gl { color: var(--ctp-blue); text-decoration: underline; }
+:root .highlight .chroma .err { color: var(--ctp-red); }
+
+.content .hextra-code-block pre,
+.content pre.chroma {
+  background-color: var(--ctp-mantle);
+  border-color: var(--ctp-surface0);
 }
