@@ -3,7 +3,7 @@ title: Void-Linux | Personal Pitfalls
 tags:
   - void
   - devlog
-categories: linux
+  - linux
 date: 2022-12-03
 lastMod: 2022-12-04
 cover:

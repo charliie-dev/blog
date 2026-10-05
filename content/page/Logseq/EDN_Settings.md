@@ -2,7 +2,6 @@
 title: Logseq | EDN_Settings
 tags:
   - logseq
-categories: logseq
 date: 2022-04-08
 lastMod: 2022-04-12
 ---
