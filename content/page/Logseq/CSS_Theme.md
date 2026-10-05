@@ -9,7 +9,7 @@ lastMod: 2022-04-21
 
 Progress par style in `custom.css`:
 
-- [GitHub Link](https://github.com/pengx17/logseq-dev-theme/blob/5feb39e5ec8e430a293ffe78736612c666a9806c/custom.css#L823-L838)
+- [pengx17/logseq-dev-theme: custom.css (L823–L838)](https://github.com/pengx17/logseq-dev-theme/blob/5feb39e5ec8e430a293ffe78736612c666a9806c/custom.css#L823-L838)
 
 ```css
 /* Progress bar */
@@ -75,7 +75,7 @@ body:not([data-page="home"]) .r > div:nth-child(2) {
 
 Coloring for tasks according this diagram by @danzu
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/953050791298605196)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/953050791298605196)
 
 ```css
 /* TODO colors */
@@ -101,7 +101,7 @@ Coloring for tasks according this diagram by @danzu
 
 Custom CSS for making query results more compact
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/953075525394522173)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/953075525394522173)
 
 ```css
 /* Compact query results */
@@ -122,7 +122,7 @@ Custom CSS for making query results more compact
 
 iOS css: Move the toggle a bit from the edge of the screen and set it to always visible on iOS
 
-- [Discord Link](https://discord.com/channels/725182569297215569/924907384730689566/953857009311186964)
+- [Logseq Discord #ios-app](https://discord.com/channels/725182569297215569/924907384730689566/953857009311186964)
 
 ```css
 /*ios 展开交互开始*/
@@ -173,7 +173,7 @@ html.is-ios .cards-review .ls-card .block-control {
 
 Dim installed plugins in Marketplace, make installable plugins easier to see (maybe could be a default rule ?)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/958162293366079509)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/958162293366079509)
 
 ```css
 /* MARKETPLACE - hide installed {{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}{{< logseq/mark >}}{{< / logseq/mark >}}===*/
@@ -186,7 +186,7 @@ Dim installed plugins in Marketplace, make installable plugins easier to see (ma
 
 Modify the style of the block being edited
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/959351405393612800)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/959351405393612800)
 
 ```css
 .editor-inner textarea {
@@ -198,7 +198,7 @@ Modify the style of the block being edited
 
 Custom right sidebar layout
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/961641146445078528)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/961641146445078528)
 
 ```css
 /* right sidebar layout */
@@ -233,15 +233,15 @@ div.sidebar-item.content.color-level.px-4.shadow-lg {
 }
 ```
 
-![demo](https://media.discordapp.net/attachments/752845138148982877/961641145505550366/screen_shot_2022-04-08_at_12.56.49_am.png?width=721&height=840)
+![Custom right sidebar layout](/images/logseq/custom-right-sidebar-layout.png)
 
 ---
 
 Cool custom query dashboard.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/766475028978991104/961480208823767060)
+- [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961480208823767060)
 
-- [Tweet Link](https://twitter.com/FelipeGanash/status/1510504058095816712?s=20&t=jDIBHRLvuQHerXI6LOlBXA)
+- [Felipe Ganash on X: Tengo bastante que leer y mucho que procesar](https://twitter.com/FelipeGanash/status/1510504058095816712?s=20&t=jDIBHRLvuQHerXI6LOlBXA)
 
 - Code:
 
@@ -611,19 +611,19 @@ th .mr-1 {
 }
 ```
 
-![Demo](https://pbs.twimg.com/media/fpzjrvbxmaeboy3?format=jpg&name=4096x4096)
+![Demo](https://pbs.twimg.com/media/FPZjRvBXMAEbOy3.jpg)
 
 ---
 
 With some extra css, we can highlight the `ruby` and make the annotation appear only on hover.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/905775051847122965)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/905775051847122965)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/905778303196098570)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/905778303196098570)
 
 - Adding rubi (small annotations on top) with the logseq-wrap plugin. this is what I added in the plugin setting:
 
-  - [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/963386351703719996)
+  - [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963386351703719996)
 
 ```
 "wrap-ruby": {
@@ -646,7 +646,7 @@ ruby {
 
 Moveable search box
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/963746504185634868)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963746504185634868)
 
 ```css
 .ui__modal-overlay div {
@@ -687,7 +687,7 @@ Moveable search box
 
 To remove/hide/format "Table View", "Set properties", etc. in query results.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/756886540038438992/964005052060672040)
+- [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/964005052060672040)
 
 ```css
 /*Hide "Set properties"*/
@@ -721,11 +721,11 @@ span.opacity-60.text-sm.ml-2.results-count {
 
 Use `[data-ref="value"]` to modify the CSS attributes(icon, font) for specific tags. For example the following will apply the following changes to tags named "literature note".
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/966165573627150357)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966165573627150357)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/966165913621647410)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966165913621647410)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/966181728186163251)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/966181728186163251)
 
 ```css
 a.tag[data-ref$="literature note"]:after {
@@ -750,7 +750,7 @@ span[data-ref^="Go Live"] .page-ref::before {
 
 Colored block via tags.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/967293385062903859)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967293385062903859)
 
 ```css
 /** Tag note ***/
@@ -811,9 +811,9 @@ a.tag[data-ref="1note"]:before {
 
 Good Images for questions and answers, and turn icons into base64.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/967459249171071056)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967459249171071056)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/967462539581603980)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967462539581603980)
 
 ```css
 /**** {{< logseq/mark >}}{{< / logseq/mark >}}=== **** Preguntas, Respuestas, notas, ideas, 

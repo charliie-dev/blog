@@ -92,7 +92,7 @@ Get all block's uuid
 
 ---
 
-Example correction `6. All pages have a "programming" tag` in [Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries)
+Example correction `6. All pages have a "programming" tag` in [Logseq Docs: Advanced Queries](https://docs.logseq.com/#/page/advanced%20queries)
 
 ```clojure
 #+BEGIN_QUERY
@@ -251,7 +251,7 @@ Query for all the blocks which have a block property = current page, use the nam
 #+END_QUERY
 ```
 
-- [Workaround](https://github.com/logseq/logseq/issues/4206#issuecomment-1038279559)
+- [`:current-page` and `<% current page %>` should not lower-case the page's title - comment](https://github.com/logseq/logseq/issues/4206#issuecomment-1038279559)
 
 ---
 
@@ -329,7 +329,7 @@ Query the block & page title of certain pages or tags
 
 Always query for current date / today
 
-- [Discord Link](https://discord.com/channels/725182569297215569/725182570131751005/952597973894848613)
+- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/952597973894848613)
 
 - `{{query <%today%>}}`
 
@@ -337,7 +337,7 @@ Always query for current date / today
 
 Concatenate all the journal entries of the week in the Friday entry.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/955436664048717855)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955436664048717855)
 
 ```clojure
 #+BEGIN_QUERY
@@ -378,10 +378,6 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 - "what is WAITING?"
 
   - **PS**: no sorting in queries, as i want to see parent pages links 😒 #.v-gallery-h400-fit
-
-![](https://media.discordapp.net/attachments/756886540038438992/955475162537558046/unknown.png)
-
-![](https://media.discordapp.net/attachments/756886540038438992/955475162734657566/z.png?width=484&height=905)
 
 - ✅ wanna have block answering my question "what is overdued?"
   - anything task calendared before today
@@ -536,19 +532,19 @@ I was trying to mix 2 layers of tasks planning as you can see - task status cycl
 
 Add HTML markup to query title
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/955453273077338202)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955453273077338202)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/955453575310499840)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/955453575310499840)
 
-- [hiccup wiki](https://github.com/weavejester/hiccup/wiki/Syntax)
+- [Hiccup Wiki: Syntax](https://github.com/weavejester/hiccup/wiki/Syntax)
 
-- [hiccup-samples](https://github.com/yokolet/hiccup-samples)
+- [yokolet/hiccup-samples](https://github.com/yokolet/hiccup-samples)
 
 ---
 
 page for pdf files has property `:file` and `:file-path`:
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/957340667292577802)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/957340667292577802)
 
 ```clojure
 #+BEGIN_QUERY
@@ -565,7 +561,7 @@ page for pdf files has property `:file` and `:file-path`:
 
 Find all unlinked pages/orphaned nodes
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/832512082289229824)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/832512082289229824)
 
 ```clojure
 #+BEGIN_QUERY
@@ -589,7 +585,7 @@ Find all unlinked pages/orphaned nodes
 
 Use query in a template.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/960623468347527208**)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/960623468347527208**)
 
 ```clojure
 #+BEGIN_QUERY
@@ -610,7 +606,7 @@ Use query in a template.
 
 Query for **icon page property**.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/766475028978991104/961743401152286770)
+- [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961743401152286770)
 
 ```clojure
 #+BEGIN_QUERY
@@ -628,7 +624,7 @@ Query for **icon page property**.
 
 Get scheduled tasks within a namespace.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/962006699223429260)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/962006699223429260)
 
 ```clojure
 #+BEGIN_QUERY
@@ -651,7 +647,7 @@ Get scheduled tasks within a namespace.
 
 Filter the page with time/timestamp.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/963473363043512390)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963473363043512390)
 
 - **Ozark/S04/Part 1**
 
@@ -721,9 +717,9 @@ release_smushed:: 20220429
 
 Using journal-date format in page property and query it.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/963685777122930698)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963685777122930698)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/963722478973243404)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/963722478973243404)
 
 - just tested it with different journal-date format. replace `[?p :block/name ?n]` with `[?p :block/original-name ?n]`. date value are stored in property with `original-name`.
 
@@ -752,7 +748,7 @@ Using journal-date format in page property and query it.
 
 Have a `property` field that I only fill with numbers (floats). Is it possible to pull blocks where this field is within a range (say 20 < x < 50, or just x > 100).
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/966146506392473640)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966146506392473640)
 
 ```clojure
 #+BEGIN_QUERY
@@ -795,7 +791,7 @@ Have a `property` field that I only fill with numbers (floats). Is it possible t
 
 Query tasks which are recurring.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/966350378172035072)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966350378172035072)
 
 ```clojure
 #+BEGIN_QUERY
@@ -812,7 +808,7 @@ Query tasks which are recurring.
 
 Query to get second block.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/743139225746145311/966502226589777920)
+- [Logseq Discord #queries](https://discord.com/channels/725182569297215569/743139225746145311/966502226589777920)
 
 ```clojure
 #+BEGIN_QUERY

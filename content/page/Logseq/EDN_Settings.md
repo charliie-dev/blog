@@ -19,7 +19,7 @@ Render a custom progress bar in Logseq, define a macro in `config.edn`:
 
 - For example Write `{{progress 47,195}}`.
 
-- [Twitter Link](https://twitter.com/pengx17/status/1502293155974025218)
+- [pengx17 on X: To render a custom progress bar in #Logseq, define a macro in config.edn](https://twitter.com/pengx17/status/1502293155974025218)
 
 - the style of the process bar in css:
 
@@ -29,7 +29,7 @@ Render a custom progress bar in Logseq, define a macro in `config.edn`:
 
 Make `!=` looks like `≠`:
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/951915033884000266)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951915033884000266)
 
 ```edn
 :commands
@@ -42,7 +42,7 @@ Make `!=` looks like `≠`:
 
 A funny experiment to turn blocks / children-blocks into resizable blocks that behave like flex-boxes
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/951186890328002570)
 
 ```edn
 /* ls-blocks : resizeable children-blocks + depth levels */
@@ -66,7 +66,7 @@ A funny experiment to turn blocks / children-blocks into resizable blocks that b
 
 Change my highlighted text's fore and back colors
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/950759618638917652)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/950759618638917652)
 
 ```css
 mark {
@@ -81,7 +81,7 @@ mark {
 
 line wrap codes
 
-- [Discord Link](https://discord.com/channels/725182569297215569/725182570131751005/963372513348423690)
+- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/963372513348423690)
 
 ```edn
 :editor/extra-codemirror-options {:lineWrapping true}

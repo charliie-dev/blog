@@ -9,25 +9,25 @@ lastMod: 2022-04-25
 
 Illustration of Logseq's implemented task states:
 
-- [Discoed Link](https://discord.com/channels/725182569297215569/725182570131751005/952564162792402976)
+- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/952564162792402976)
 
-![logseq_implemented_task_states](https://raw.githubusercontent.com/charleschiu2012/image-hosting/main/img/Logseq_implemented_task_states.png)
+![Logseq implemented task states](https://raw.githubusercontent.com/charleschiu2012/image-hosting/main/img/Logseq_implemented_task_states.png)
 
 ---
 
 Vault survival kit
 
-- [Discord Link](https://discord.com/channels/725182569297215569/756886540038438992/952605818791030866)
+- [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/952605818791030866)
 
-![pkm_vault_survival_kit](https://raw.githubusercontent.com/charleschiu2012/image-hosting/main/img/PKM_Vault_survival_kit.png)
+![PKM vault survival kit](https://raw.githubusercontent.com/charleschiu2012/image-hosting/main/img/PKM_Vault_survival_kit.png)
 
 ---
 
 Save a current safari selection to Logseq as a quote and link
 
-- [Discord Link](https://discord.com/channels/725182569297215569/924907384730689566/955548362139119706)
+- [Logseq Discord #ios-app](https://discord.com/channels/725182569297215569/924907384730689566/955548362139119706)
 
-- [iCloud shortcut](https://www.icloud.com/shortcuts/a5fb574078e2494da34fd4c468d9c1ef)
+- [iCloud Shortcut: Add to Logseq](https://www.icloud.com/shortcuts/a5fb574078e2494da34fd4c468d9c1ef)
 
 ---
 
@@ -37,15 +37,15 @@ While querying a page that uses namespace, replace the slash with underscore. So
 
 A new shortcut using @sawhneys shortcut as reference to add dictated text as a note to logseq (today) with a tag \#voicenote
 
-- [Discord Link](https://discord.com/channels/725182569297215569/924907384730689566/956086408819392523)
+- [Logseq Discord #ios-app](https://discord.com/channels/725182569297215569/924907384730689566/956086408819392523)
 
-- [iCloud shortcut](https://www.icloud.com/shortcuts/da2d44bf4e9e4f17a92bec5472cc8384)
+- [iCloud Shortcut: Logseq Voice Note Today](https://www.icloud.com/shortcuts/da2d44bf4e9e4f17a92bec5472cc8384)
 
 ---
 
 Use Logseq with [[Software/Virtualization/Docker/container]]
 
-- [Discord Link](https://discord.com/channels/725182569297215569/725182570131751005/956622800716705832)
+- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/956622800716705832)
 
 - [logseq/logseq: docs/docker-web-app-guide.md](https://github.com/logseq/logseq/blob/master/docs/docker-web-app-guide.md)
 
@@ -55,7 +55,7 @@ You can write equations in Markdown even if your md editor doesn't support Latex
 
 - [Discord Link](https://discord.com/channels/717965437182410783/904891933284007966/956934748721270784)
 
-![pi](<http://latex.codecogs.com/png.latex?\frac{1}{\pi}=\frac{2\sqrt{2}}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103%2B26390k)}{(k!)^4396^{4k}}>)
+![pi](<https://latex.codecogs.com/png.latex?\frac{1}{\pi}=\frac{2\sqrt{2}}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103%2B26390k)}{(k!)^4396^{4k}}>)
 
 - ref: [CodeCogs Equation Editor: Quickstart](https://editor.codecogs.com/docs)
 
@@ -65,7 +65,7 @@ imo the best iteration on the logo is still
 [Logseq Logo design](https://www.figma.com/community/file/933752127976667301)
 it's minimalistic so it scales well, it works in color and b&w, it works great as a static logo and animated logo, the dots are reminiscent of nodes, the shape is the L of logseq, the moving dots hint at the connection between nodes and the ever-evolving nature of a graph, and it still inherits traits from the previous logos, while setting a different mood from competitors (roam, obsidian, craft, clover, …)
 
-- [Discord Link](https://discord.com/channels/725182569297215569/775936939638652948/934860582799147009)
+- [Logseq Discord #design](https://discord.com/channels/725182569297215569/775936939638652948/934860582799147009)
 
 - [Logseq Logo design](https://www.figma.com/community/file/933752127976667301)
 
@@ -75,7 +75,7 @@ it's minimalistic so it scales well, it works in color and b&w, it works great a
 
 This would hide the properties, but shows them on hover. The indicator can be anything, but for hover to work, there has to be something.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/752845138148982877/906275176742801410)
+- [Logseq Discord #themes](https://discord.com/channels/725182569297215569/752845138148982877/906275176742801410)
 
 ```css
 .content .block-properties {
@@ -104,15 +104,15 @@ This would hide the properties, but shows them on hover. The indicator can be an
 
 How do you pronounce Logseq?
 
-- [Discord Link](https://discord.com/channels/725182569297215569/756886540038438992/957664768553001050)
+- [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/957664768553001050)
 
-- ![howtopronouncelogseq](https://raw.githubusercontent.com/charleschiugit/image-hosting/main/img/HowToPronounceLogseq.png)
+- ![How to pronounce Logseq](https://raw.githubusercontent.com/charleschiugit/image-hosting/main/img/HowToPronounceLogseq.png)
 
 ---
 
 Add icon to page property for better project-management and visualization.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/766475028978991104/961627375370661918)
+- [Logseq Discord #workflows](https://discord.com/channels/725182569297215569/766475028978991104/961627375370661918)
 
 - I'm a big fan of namespaces and in this case, what makes the most sense to me is having a tag.
 
@@ -126,7 +126,7 @@ Add icon to page property for better project-management and visualization.
 
 \$6\*8=\$48 in LaTeX
 
-- [Discord Link](https://discord.com/channels/725182569297215569/725182570131751005/963510550124437504)
+- [Logseq Discord #general](https://discord.com/channels/725182569297215569/725182570131751005/963510550124437504)
 
 - replace the `$` with `\char36` in `$...$`
 
@@ -136,7 +136,7 @@ Add icon to page property for better project-management and visualization.
 
 Add `{{namespace keyword}}` in the Contents section to get automatic Table of Contents.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/963821349917319219)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/963821349917319219)
 
 - {{namespace Logseq}}
 
@@ -144,19 +144,19 @@ Add `{{namespace keyword}}` in the Contents section to get automatic Table of Co
 
 Logseq URL Protocol overview.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/756886540038438992/965024044183339088)
+- [Logseq Discord #look-what-i-built](https://discord.com/channels/725182569297215569/756886540038438992/965024044183339088)
 
 - demo: #.v-gallery-col2
 
-- ![logseq%20url%20protocol%20overview](https://raw.githubusercontent.com/charleschiugit/image-hosting/main/img/Logseq%20URL%20Protocol%20overview.png)
+- ![Logseq URL protocol overview](https://raw.githubusercontent.com/charleschiugit/image-hosting/main/img/Logseq%20URL%20Protocol%20overview.png)
 
-- ![logseq%20url%20protocol%20breakdown](https://raw.githubusercontent.com/charleschiugit/image-hosting/main/img/Logseq%20URL%20Protocol%20breakdown.png)
+- ![Logseq URL protocol breakdown](https://raw.githubusercontent.com/charleschiugit/image-hosting/main/img/Logseq%20URL%20Protocol%20breakdown.png)
 
 ---
 
 Embed Jupyter that are running in JupyterLite. #Python
 
-- [Discord Link](https://discord.com/channels/725182569297215569/736514221499744287/967240289888641158)
+- [Logseq Discord #off-topic](https://discord.com/channels/725182569297215569/736514221499744287/967240289888641158)
 
 - [JupyterLite: Jupyter ❤️ WebAssembly ❤️ Python](https://blog.jupyter.org/jupyterlite-jupyter-%EF%B8%8F-webassembly-%EF%B8%8F-python-f6e2e41ab3fa)
 
@@ -175,7 +175,7 @@ Embed Jupyter that are running in JupyterLite. #Python
 
 Insert an audio player using the same syntax than images.
 
-- [Discord Link](https://discord.com/channels/725182569297215569/740582434961358848/967518539785310228)
+- [Logseq Discord #tips](https://discord.com/channels/725182569297215569/740582434961358848/967518539785310228)
 
 `![](assets/audio.mp3)`
 
