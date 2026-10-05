@@ -1,33 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Blog</title>
+    <title>charliie.dev – Tags</title>
     <link>https://blog.charliie.dev/tags/</link>
-    <description>Recent content in Tags on Blog</description>
-    <generator>Hugo -- 0.163.3</generator>
+    <description>Recent content in Tags on charliie.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 Dec 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://blog.charliie.dev/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Devlog</title>
-      <link>https://blog.charliie.dev/tags/devlog/</link>
-      <pubDate>Sat, 03 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://blog.charliie.dev/tags/devlog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Void</title>
-      <link>https://blog.charliie.dev/tags/void/</link>
-      <pubDate>Sat, 03 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://blog.charliie.dev/tags/void/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Logseq</title>
-      <link>https://blog.charliie.dev/tags/logseq/</link>
-      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://blog.charliie.dev/tags/logseq/</guid>
-      <description></description>
-    </item>
+    
+	  <atom:link href="https://blog.charliie.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
   </channel>
 </rss>

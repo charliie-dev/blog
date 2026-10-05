@@ -3,52 +3,92 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.charliie.dev/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.charliie.dev/categories/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.charliie.dev/tags/devlog/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.charliie.dev/categories/linux/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/devlog/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/tags/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/vim/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/page/vim/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/linux/</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/tags/void/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/void-linux/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.charliie.dev/categories/logseq/</loc>
-    <lastmod>2022-04-25T00:00:00+00:00</lastmod>
+    <loc>https://blog.charliie.dev/page/diffusion-models/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/machine-learning/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/page/software-basics/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/foodie/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/foodie/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/ramen/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/foodie/chuiyan-ramen/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/python/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/page/python-profiling/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/page/python-dataclasses/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/tags/logseq/</loc>
-    <lastmod>2022-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/logseq/css_theme/</loc>
-    <lastmod>2022-04-21T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/logseq/edn_settings/</loc>
-    <lastmod>2022-04-12T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/logseq/mottos/</loc>
-    <lastmod>2022-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/logseq/queries/</loc>
-    <lastmod>2022-04-21T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.charliie.dev/page/logseq/tips/</loc>
-    <lastmod>2022-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.charliie.dev/archives/</loc>
+    <loc>https://blog.charliie.dev/tags/design/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://blog.charliie.dev/search/</loc>
+    <loc>https://blog.charliie.dev/page/color-60-30-10/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/tags/pkm/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/page/pkm-tools/</loc>
+    <lastmod>2026-10-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.charliie.dev/dj/</loc>
   </url>
 </urlset>

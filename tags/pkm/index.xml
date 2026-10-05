@@ -1,0 +1,229 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>charliie.dev – Pkm</title>
+    <link>https://blog.charliie.dev/tags/pkm/</link>
+    <description>Recent content in Pkm on charliie.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Mar 2022 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://blog.charliie.dev/tags/pkm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>PKM | Choosing and Combining Note Tools</title>
+      <link>https://blog.charliie.dev/page/pkm-tools/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.charliie.dev/page/pkm-tools/</guid>
+      <description>
+        
+        
+        &lt;p&gt;What I took away from a handful of videos about personal knowledge management (PKM) tools: how to
+choose one, why Logseq, and how it fits with other tools. The lines I keep coming back to are in
+&lt;a href=&#34;https://blog.charliie.dev/page/logseq/mottos/&#34;&gt;Logseq | Mottos&lt;/a&gt;. Sources are collected at the bottom.&lt;/p&gt;
+&lt;h2 data-hextra-search-id=&#34;choosing-a-tool&#34;&gt;Choosing a tool&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;choosing-a-tool&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#choosing-a-tool&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Tools on Tech&amp;rsquo;s checklist:&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Do you need a tool at all?&lt;/strong&gt; A tool adds to the system you already have. Without a working
+system, a new tool will not fix the problem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;What problem should it solve?&lt;/strong&gt; Write down the pros and cons of how you work today.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Which tools fit?&lt;/strong&gt; Watch a few reviews, then ask whether a tool suits you: not only its
+features, but whether it feels good to use.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test it.&lt;/strong&gt; Make a free account and check that it does the core job, the deal-breakers you
+cannot live without.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commit.&lt;/strong&gt; No tool is perfect. Decide what you can and cannot live with, then stay with it;
+switching every month is not where happiness lies.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There is no best tool, only the one that fits your own list of needs.&lt;/p&gt;
+&lt;h2 data-hextra-search-id=&#34;why-logseq-for-technical-notes&#34;&gt;Why Logseq for technical notes&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-logseq-for-technical-notes&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-logseq-for-technical-notes&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Bryan Jenks keeps his technical notes and developer log in Logseq, separate from his other
+notes.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Likes&lt;/th&gt;
+					&lt;th&gt;Dislikes, but not deal-breakers&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;A strict outliner&lt;/td&gt;
+					&lt;td&gt;A flood of Git commits&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Private: you own your data&lt;/td&gt;
+					&lt;td&gt;An odd query syntax&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Versioned and synced through GitHub&lt;/td&gt;
+					&lt;td&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Plain-text Markdown&lt;/td&gt;
+					&lt;td&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Built on web technology, so CSS can restyle it&lt;/td&gt;
+					&lt;td&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id=&#34;logseq-and-obsidian-together&#34;&gt;Logseq and Obsidian together&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;logseq-and-obsidian-together&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#logseq-and-obsidian-together&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Both apps read the same folder of Markdown files, so they can share one set of notes, synced to
+other devices through GitHub.&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/pkm/logseq-obsidian-github.png&#34; alt=&#34;Obsidian and Logseq both reading one folder of Markdown files, synced through GitHub to a phone and a laptop&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Santi Younger frames the split with Simon Sinek&amp;rsquo;s Golden Circle: start from &lt;strong&gt;why&lt;/strong&gt; you want
+something, then &lt;strong&gt;how&lt;/strong&gt;, then &lt;strong&gt;what&lt;/strong&gt;.&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/pkm/golden-circle.png&#34; alt=&#34;The Golden Circle: why at the centre, then how, then what&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Obsidian is better at&lt;/th&gt;
+					&lt;th&gt;Logseq is better at&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Community plugins&lt;/td&gt;
+					&lt;td&gt;Daily notes&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Writing long-form text&lt;/td&gt;
+					&lt;td&gt;Embedding blocks&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Speed and stability&lt;/td&gt;
+					&lt;td&gt;Backlinks&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;So the &lt;strong&gt;why&lt;/strong&gt; is to use each tool for its strength, and the &lt;strong&gt;what&lt;/strong&gt; follows: make outlines in
+Logseq, and write the detailed paragraphs in Obsidian. Tools on Tech reaches the same split:
+Obsidian for long documents, Logseq for pulling blocks from many notes onto one page.&lt;sup id=&#34;fnref1:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id=&#34;a-reading-pipeline-zotero-liquidtext-and-logseq&#34;&gt;A reading pipeline: Zotero, LiquidText and Logseq&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;a-reading-pipeline-zotero-liquidtext-and-logseq&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#a-reading-pipeline-zotero-liquidtext-and-logseq&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A workflow someone shared in the Logseq community, on a Mac and an iPad:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Zotero&lt;/strong&gt; keeps every reference, with its PDF attached.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LiquidText&lt;/strong&gt; opens those Zotero-linked PDFs for highlighting, then turns the highlights into
+a unified summary.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logseq&lt;/strong&gt; gets the short, clean summary notes, each linked back to Zotero through Logseq&amp;rsquo;s
+Zotero plugin. That reads better across apps than highlighting inside Logseq&amp;rsquo;s own PDF reader.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Obsidian&lt;/strong&gt; serves as a light editor on the go, for article notes on pages first set up in
+Logseq, and for long-form and non-academic writing.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Two details from the thread: LiquidText&amp;rsquo;s Zotero integration comes with the one-time Pro purchase,
+no subscription needed, and its Zotero sync is limited by your Zotero cloud storage, which is
+300 MB on the free plan.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/pkm/liquidtext-in-logseq.jpg&#34; alt=&#34;A PDF highlighted in LiquidText next to the summary notes in Logseq&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id=&#34;simple-queries&#34;&gt;Simple queries&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;simple-queries&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#simple-queries&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Queries beat search for two reasons: they find exactly what you describe, and they stay on the
+page as a permanent record you can return to.&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Query&lt;/th&gt;
+					&lt;th&gt;Finds&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;{{query (and [[a]] [[b]])}}&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Blocks that reference both pages&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;{{query (or [[a]] [[b]])}}&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Blocks that reference either page&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;{{query (and [[a]] (not [[b]]))}}&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Blocks that reference &lt;code&gt;a&lt;/code&gt; but not &lt;code&gt;b&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;{{query (property name value)}}&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Blocks with a property set to a value&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;{{query (todo now later)}}&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Tasks in the given states&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Queries can also sit in a Markdown table, for example to compare wake-up and bed times side by
+side. For advanced queries, see &lt;a href=&#34;https://blog.charliie.dev/page/logseq/queries/&#34;&gt;Logseq | Queries&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id=&#34;taking-notes-on-videos&#34;&gt;Taking notes on videos&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;taking-notes-on-videos&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#taking-notes-on-videos&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;All of the notes above started as video notes in Logseq. Three things make that easier:&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+Shift+Y&lt;/code&gt;&lt;/strong&gt; inserts a timestamp for the embedded YouTube video&amp;rsquo;s current position.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A taller player.&lt;/strong&gt; This line in &lt;code&gt;custom.css&lt;/code&gt; makes the embedded player easier to watch:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;iframe&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;^=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;youtube-player&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;700&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt; &lt;span class=&#34;cp&#34;&gt;!important&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Readable timestamps.&lt;/strong&gt; Logseq&amp;rsquo;s timestamp macros can be turned into plain Markdown, so the notes
+stay readable outside Logseq.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/hPZnsfIQbSY&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tools on Tech: 053 LoY What Tool to select Items of power&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/43PKm0TfyNk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bryan Jenks: How I&amp;rsquo;m Using Logseq For My DevLog &amp;amp; Technical Notes&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/knxDHO3U2_8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tools on Tech: How to use Obsidian and Logseq together and why a Markdown backend matters&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref1:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/WpnbSWt_mgM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Santi Younger: Obsidian and Logseq - Why Use Both?&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/qQ8DzumRZkM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OneStutteringMind: How to use queries and indentation in Logseq (with examples)&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/PvFr36bcpYc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;aadimator: Taking notes on YouTube videos in LogSeq&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

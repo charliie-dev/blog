@@ -1,0 +1,88 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>charliie.dev – Design</title>
+    <link>https://blog.charliie.dev/tags/design/</link>
+    <description>Recent content in Design on charliie.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Mar 2022 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://blog.charliie.dev/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Design | The 60-30-10 Colour Rule</title>
+      <link>https://blog.charliie.dev/page/color-60-30-10/</link>
+      <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.charliie.dev/page/color-60-30-10/</guid>
+      <description>
+        
+        
+        &lt;p&gt;A simple rule for spreading colour across an interface, from Jesse Showalter&amp;rsquo;s video.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id=&#34;the-rule&#34;&gt;The rule&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-rule&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-rule&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Share&lt;/th&gt;
+					&lt;th&gt;Colour&lt;/th&gt;
+					&lt;th&gt;Used for&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;60%&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Neutral or base colour&lt;/td&gt;
+					&lt;td&gt;Backgrounds and large surfaces&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;30%&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Primary colour&lt;/td&gt;
+					&lt;td&gt;Often the brand colour: important, but less so than the accent&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;10%&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Action or accent colour&lt;/td&gt;
+					&lt;td&gt;Only what should say &amp;ldquo;click me&amp;rdquo; or &amp;ldquo;look at me&amp;rdquo;. Use it sparingly, so it keeps that pull.&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id=&#34;examples&#34;&gt;Examples&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;examples&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#examples&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3 data-hextra-search-id=&#34;before-and-after&#34;&gt;Before and after&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;before-and-after&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#before-and-after&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first screen does not follow the rule: the gradient card competes with everything else. The
+second gives the card the primary colour and leaves the accent for actions.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/design/60-30-10-case1-before.png&#34; alt=&#34;A learning app before applying the rule, with a teal gradient card&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/design/60-30-10-case1-after.png&#34; alt=&#34;The same learning app after applying the rule, with a navy card&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3 data-hextra-search-id=&#34;two-colours-with-gradients&#34;&gt;Two colours with gradients&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;two-colours-with-gradients&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#two-colours-with-gradients&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Close to a two-colour design, with a little gradient on top of it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/design/60-30-10-case2.png&#34; alt=&#34;A chat app in white and purple with purple gradients&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3 data-hextra-search-id=&#34;an-orange-call-to-action&#34;&gt;An orange call to action&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;an-orange-call-to-action&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#an-orange-call-to-action&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Orange stays the 10% action colour throughout the guitar shop&amp;rsquo;s screens.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/design/60-30-10-case3.png&#34; alt=&#34;Three screens of a guitar shop where only the buttons and highlights are orange&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3 data-hextra-search-id=&#34;the-rule-reversed&#34;&gt;The rule reversed&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-rule-reversed&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-rule-reversed&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The 60% is a colour instead of a neutral, but the accent still takes only 10%.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/design/60-30-10-case4.png&#34; alt=&#34;A task manager whose large surfaces are purple&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3 data-hextra-search-id=&#34;dark-theme&#34;&gt;Dark theme&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;dark-theme&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#dark-theme&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The dark version of the same app, again with 10% on the action colour.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.charliie.dev/images/design/60-30-10-case5.png&#34; alt=&#34;The task manager in a dark theme with orange accents&#34;  data-zoomable loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/UWwNIMHFdW4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jesse Showalter: 60-30-10 Color Rule&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; aria-hidden=&#34;true&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
